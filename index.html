@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>程立民 教授｜個人學術與專業經歷網站</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#152642;
+    --navy-2:#1f3a5f;
+    --gold:#b9924a;
+    --gold-light:#e4c98a;
+    --paper:#faf7f1;
+    --paper-2:#f1ece1;
+    --ink:#25303f;
+    --ink-soft:#5b6674;
+    --line:#e1d9c8;
+    --card:#ffffff;
+    --shadow: 0 10px 30px -12px rgba(21,38,66,0.18);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC", sans-serif;
+    background:
+      radial-gradient(1200px 600px at 100% -10%, rgba(185,146,74,0.10), transparent 60%),
+      linear-gradient(180deg, var(--paper) 0%, var(--paper) 100%);
+    color:var(--ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:"Noto Serif TC", serif; margin:0; color:var(--navy);}
+  a{color:inherit;}
+  .container{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,247,241,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 28px; max-width:1080px; margin:0 auto;}
+  .brand{font-family:"Noto Serif TC", serif; font-weight:700; color:var(--navy); font-size:1.05rem; letter-spacing:.02em;}
+  .brand span{color:var(--gold);}
+  .navlinks{display:flex; gap:26px; font-size:.92rem; font-weight:500;}
+  .navlinks a{text-decoration:none; color:var(--ink-soft); padding:6px 2px; border-bottom:2px solid transparent; transition:.2s;}
+  .navlinks a:hover{color:var(--navy); border-color:var(--gold);}
+  .navtoggle{display:none;}
+
+  /* HERO */
+  .hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #24456d 100%);
+    color:#f4efe4;
+    padding:72px 0 64px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(500px 320px at 85% 15%, rgba(228,201,138,0.20), transparent 65%),
+      radial-gradient(700px 400px at 10% 100%, rgba(228,201,138,0.10), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.35fr 0.9fr; gap:48px; align-items:center;
+    position:relative; z-index:1;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold-light); font-weight:700; margin-bottom:18px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--gold-light); display:inline-block;}
+  .hero h1{color:#fff; font-size:2.5rem; line-height:1.3; margin-bottom:6px;}
+  .hero h1 .degree-tag{
+    color:#ffffff; font-size:0.95rem; font-weight:400; font-family:"Noto Sans TC",sans-serif;
+    margin-left:12px; vertical-align:middle; letter-spacing:.05em;
+  }
+  .hero .en-name{font-family:"Noto Sans TC",sans-serif; color:var(--gold-light); font-size:1rem; letter-spacing:.08em; margin-bottom:18px; font-weight:400;}
+  .hero .titles{list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:8px;}
+  .hero .titles li{font-size:1rem; color:#e9e2d2; display:flex; gap:10px; align-items:flex-start;}
+  .hero .titles li::before{content:"◆"; color:var(--gold); font-size:.55rem; margin-top:8px;}
+  .contact-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px;}
+  .contact-pill{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.08); border:1px solid rgba(228,201,138,0.35);
+    padding:10px 16px; border-radius:999px; font-size:.9rem; color:#f4efe4; text-decoration:none;
+    transition:.2s;
+  }
+  .contact-pill:hover{background:rgba(228,201,138,0.18); border-color:var(--gold-light);}
+  .contact-pill svg{width:16px; height:16px; flex-shrink:0;}
+
+  .hero-photo-wrap{display:flex; justify-content:center;}
+  .hero-photo{
+    width:260px; height:260px; border-radius:50%;
+    border:6px solid rgba(228,201,138,0.55);
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.45);
+    overflow:hidden; position:relative;
+    background:#0f1e33;
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover; object-position:50% 30%;}
+
+  /* STATS STRIP */
+  .stats{
+    background:var(--card);
+    margin-top:-36px; position:relative; z-index:2;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    max-width:1080px; margin-left:auto; margin-right:auto;
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line);
+  }
+  .stat{
+    text-align:center; padding:26px 12px;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:"Noto Serif TC", serif; font-size:2.1rem; font-weight:700; color:var(--navy);}
+  .stat .num span{color:var(--gold);}
+  .stat .label{font-size:.82rem; color:var(--ink-soft); margin-top:4px;}
+
+  section{padding:80px 0 20px;}
+  .section-head{margin-bottom:38px; text-align:left;}
+  .section-tag{font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; display:block;}
+  .section-head h2{font-size:1.9rem;}
+  .section-sub{color:var(--ink-soft); margin-top:10px; max-width:640px; font-size:.98rem;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns: 1fr 1fr; gap:28px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px 26px; box-shadow:var(--shadow);
+  }
+  .card h3{font-size:1.08rem; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
+  .card h3 .dot{width:8px; height:8px; border-radius:50%; background:var(--gold); display:inline-block;}
+  .card ul{margin:0; padding:0; list-style:none;}
+  .card li{padding:10px 0; border-bottom:1px dashed var(--line); font-size:.95rem;}
+  .card li:last-child{border-bottom:none;}
+  .card li b{color:var(--navy); font-weight:600;}
+  .tagwrap{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .tag{
+    background:var(--paper-2); color:var(--navy-2); border:1px solid var(--line);
+    padding:6px 14px; border-radius:999px; font-size:.82rem; font-weight:500;
+  }
+
+  /* PUBLICATIONS */
+  .pub-tabs{display:flex; gap:10px; margin-bottom:26px; flex-wrap:wrap;}
+  .pub-tab{
+    padding:10px 20px; border-radius:999px; border:1px solid var(--line);
+    background:var(--card); cursor:pointer; font-size:.9rem; font-weight:600; color:var(--ink-soft);
+    transition:.2s; display:flex; align-items:center; gap:8px;
+  }
+  .pub-tab .count{
+    background:var(--paper-2); color:var(--navy); border-radius:999px; padding:1px 9px; font-size:.78rem;
+  }
+  .pub-tab.active{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .pub-tab.active .count{background:var(--gold); color:var(--navy);}
+  .pub-list{display:flex; flex-direction:column; gap:12px;}
+  .pub-item{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:18px 22px; box-shadow:0 4px 14px -8px rgba(21,38,66,0.12);
+    display:grid; grid-template-columns:64px 1fr; gap:18px; align-items:start;
+  }
+  .pub-year{
+    font-family:"Noto Serif TC", serif; font-weight:700; color:var(--gold); font-size:1.05rem;
+    border-right:1px solid var(--line); padding-right:14px; text-align:center;
+  }
+  .pub-year small{display:block; font-family:"Noto Sans TC",sans-serif; font-weight:400; color:var(--ink-soft); font-size:.68rem; margin-top:4px;}
+  .pub-title{font-size:.98rem; color:var(--ink); font-weight:500;}
+  .pub-meta{font-size:.84rem; color:var(--ink-soft); margin-top:5px;}
+  .pub-badge{
+    display:inline-block; margin-top:8px; font-size:.72rem; padding:3px 10px; border-radius:999px;
+    background:var(--paper-2); color:var(--navy-2); border:1px solid var(--line); font-weight:600;
+  }
+  .hidden{display:none !important;}
+
+  /* TALKS TABLE */
+  .table-wrap{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+  }
+  table{width:100%; border-collapse:collapse; font-size:.92rem;}
+  thead th{
+    text-align:left; background:var(--navy); color:#f4efe4; font-family:"Noto Serif TC",serif;
+    padding:14px 20px; font-weight:500; font-size:.88rem;
+  }
+  tbody td{padding:16px 20px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:var(--paper-2);}
+  .talk-topic{font-weight:600; color:var(--navy);}
+  .talk-date{color:var(--gold); font-weight:700; white-space:nowrap;}
+
+  /* COMMITTEE */
+  .committee-list{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .committee-item{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px;
+    display:flex; gap:14px; align-items:flex-start; box-shadow:0 4px 14px -8px rgba(21,38,66,0.10);
+  }
+  .committee-item .icon{
+    width:38px; height:38px; border-radius:10px; background:var(--navy); color:var(--gold-light);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:"Noto Serif TC",serif; font-weight:700;
+  }
+  .committee-item .txt b{display:block; color:var(--navy); font-size:.96rem; margin-bottom:3px;}
+  .committee-item .txt span{font-size:.82rem; color:var(--ink-soft);}
+
+  footer{
+    margin-top:90px; background:var(--navy); color:#cfd7e3; padding:48px 0 28px;
+  }
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:center;}
+  footer .fname{font-family:"Noto Serif TC",serif; color:#fff; font-size:1.2rem;}
+  footer .fsub{font-size:.85rem; color:#9fb0c8; margin-top:4px;}
+  .footer-contact{display:flex; gap:18px; flex-wrap:wrap;}
+  .footer-contact a{text-decoration:none; color:#e9e2d2; font-size:.88rem; display:flex; gap:6px; align-items:center;}
+  .copyline{text-align:center; font-size:.78rem; color:#7c8ba3; margin-top:34px; border-top:1px solid rgba(255,255,255,0.08); padding-top:22px;}
+
+  .share-btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--gold); color:var(--navy);
+    padding:10px 20px; border-radius:999px; font-weight:700; font-size:.88rem; border:none; cursor:pointer;
+  }
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero .titles{align-items:center;}
+    .hero .titles li{text-align:left;}
+    .contact-row{justify-content:center;}
+    .hero-photo-wrap{order:-1;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(2){border-right:none;}
+    .about-grid{grid-template-columns:1fr;}
+    .committee-list{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+    table, thead, tbody, th, td, tr{display:block;}
+    thead{display:none;}
+    tbody tr{padding:14px 20px; border-bottom:1px solid var(--line);}
+    tbody td{padding:4px 0; border:none;}
+    .pub-item{grid-template-columns:1fr;}
+    .pub-year{border-right:none; text-align:left; padding-right:0; display:flex; gap:8px; align-items:baseline;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">程立民<span>．</span>Cheng Li-Min</div>
+    <div class="navlinks">
+      <a href="#about">學經歷</a>
+      <a href="#publications">著作</a>
+      <a href="#talks">研討會論文</a>
+      <a href="#committee">委員與人才庫</a>
+      <a href="#contact">聯絡方式</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">個人學術與專業經歷</span>
+      <h1>程立民<span class="degree-tag">博士</span></h1>
+      <div class="en-name">CHENG, LI-MIN</div>
+      <ul class="titles">
+        <li>亞洲大學財經法律學系　兼任助理教授</li>
+        <li>國立勤益科技大學資訊管理系　兼任助理教授</li>
+        <li>國立臺中科技大學老人服務事業管理系　兼任助理教授</li>
+      </ul>
+      <div class="contact-row">
+        <a class="contact-pill" href="tel:0928961315">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          0928-961-315
+        </a>
+        <a class="contact-pill" href="mailto:lawlimin@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          lawlimin@gmail.com
+        </a>
+        <button class="share-btn" onclick="sharePage()">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 3.9M15.4 6.5l-6.8 3.9"/></svg>
+          分享名片
+        </button>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCADvAUQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC6ohQhdzKVHADk0lrkXEmJWwecNg1n2kXmxlygLHualtWMd3IrZwAMfSvy1qx/PbUm00jaVpJFJMi4B44xTLid4Yi+3efY1CLgLlSeM856Uy5nxEeSp6is0pbFtSLYLMmdmfXBqNLlLgum1lZTzxUEeoxnOXGcUltMpuJSrjkjOKq3cSk7ppE+9SpGcD3pgAYYABp3mpMGJxw2OO9RLIjMw6lepAqlodCfVoja3QliABkckVVuIF8oF0JB9KneaAHhu/SklMe8HzMA9s1spdC042M9oFMy+XliDnJ7VZS3zLuJ56c1KYsHiTA9cU7LccjrxVc1zXoRLARcbtvyYwaliUI0isG2sQQQOlSE/MORkfyp6SMHGEOKd0yuUQzBmTy87ge47Vcwz54UA1CjxqwHcdzUpmjUElug70nJXJ5W+o23kKZjYAMgwcU29ciMZHQg896Y8SykluCwzlTyKabb92y7iw65zQrFRvse7fB+683wi6Z+5cMOPcA11NyQUPTj0rgPgndA6PqUfXbMrDB9R/8AWrubh/vZwMc19ng3+4ifq2WyUsLB+Rl3nBzWDfKWBOOK27o5471j3bZH9B2rt6HqWsef+PbUXHhjVUxz5DEfhzXyMr+XPKoG45P86+y/EkH2nS76LH34HH14NfGlxp8ouztmKAuRjHI9qzmdlC9tDbt2InTjjHauncedpE2VwcEfpXMQPgx8dFwa6mwcSWEgxnjvXh1N0z2Y9Tz7UPH+peAVzptpbJLMOLyZd7J7KOg+tcBr/jvXfFMhOp6pc3innY74QfRRxXY+LtLa70yYlWdkJdQO31/CvLXIU4r6bDTUoKx89iYuM2zY0HVZNK1W2u422tGwIwa+ldIum1pU+xRNcmZFdVRdzYI9K+UlmIPHHevX/hf46u9MsFNvfnT5rbIFwihmVCD/AAngj261z42h7TlZphq7pJ2R6TJp11pV/dR3lo1pc7RuiYAEDgg4+lSJLugQkZ2nAz2qHW/E8XiPULa+W7S7aSzgM0q8ZkCYb9RWdDeKX+c/dk6np614tWPLUa6I9qhNypptbluRY01aKQryxU/TmjVroRyjg554FUNTlMVwjDorA4FN16523CtjAOQKpO9rA47mloOsmaaSErjao6nrWlqM/m6eQw5XBx6Vw2m34tbtpXbChQSPYda6RNWhuvMt0bczw7xgcUTjZ6CUtLE+nx4h80DncOBXVafyFP8AF3zXJWMnlxNEeDndXT6bJlVOevNdNKT5WcldXndnU2xweM+vFdVoTYhXuc1ydrJkZB4x6V03h+QHIz3rVa6nI/I3goYZOPxopFl2jG0n8KK11GUfh18EtY8a6XNfwz29hp6SNFHcXRI84g9QB2965zxh4J1TwJ4jbT9VhCMy74pEOUlXP3lPevdprLwvqXwe8JW+vand6Rp5QFJLTO1pRnIfAPv1rnvi5qvhnUPh7otlpeux6zfaZMI45JDmbyiCDnjthfyrxsRgaEKHNF2la++/lY/IK+BpRoXjulfff5Hn/wALbW2uviHoUVzFHcQyXSo8cqhkYHIwQa9l8Rav8ND4qufDOp+FktZxMLc3UMQVQxxggqQR19K8R+HMwtfHmguzY2XsX6tX0B4v8SfDbS/HU6a3pD/2xFKrvd+WWTdgEMcN247U8st9Xbbive6ryKwCXsXdpa9TwT4meAU8E+Lb3So1M0CASRMFyxRuRnH5VxkUIiuHCnHHTFfVVrbXq/HuW4vWiubXU9OdrR1X5TFtGB9R/WvOfhTpNvdT/EGCe3huNli5iLoCUYM/Iz0rCrl6lUfI7Jt6ehjWwEXU93RNv5WPHLVtryKTyGOKeuTcuA2OK+gdOsvBHh34U6N4j1jRo7i7eJoQIYwWmkORlhnBxjqelZdl4R8D+FfD+jz+KLG7utS1qLz/ADYC221RunQgDGR696j+y5J/Etr+l9iVl0kkuZdzwqFAEYNzyc0yKEMpLYJBIHtXr1n8FIV+Il3o91emLR4oDfC7H3nhOMY9+cH6VV8UfDjw5N4bvNb8H6tJqNrZOFuopx8yAnqOBxWEsBX5ZStt9+hmsBVUXtoeWxSF4mBPABBNR7hCVMbjOeR1ruPEXwquNH8RaNocWoRTvqqRvHOylVTf0BHJrl/FHh6Twrq93pczRyT2spidoz8pI7isZ0J0r8y62MJ4acPiWxUkuXeZUVtox97HSpoZXEpichmHO7PUVv8Ahr4Z+IPF1nLfafZCWzjypleRYwWHYZPJrnL2M2WrGzkKLdICrxbgWUj1xUvD1eW/Lox/V6jjzcrLyEHgdfSo3RWuRvGQV4zRLBNaFTNC0e9cqWGMj2rX8FeGB438Xado7XbWP2oOBOq7sEIWxj8KyhRqSkoJasSoSb5bamSgVZzGOEK5HNP2RpDkPtUds1Vnhk0/ULq2kYtJC7R5IxnBxVJpT5aoScF8EHoalwkpWZHI4s9e+DEoL6nGszcqrfIceorvtSnktYyVlL8/xr/hivK/g3OItevAAFLwduhwa9N1h99q/tzX1eXyvRXzP0zKHfCRTMm41uUdY0bvwSKyrnXQc7oG/wCAsDTblyOcVj3cgxXpnuXuLeavbShxtkXIIOEzXzLqOlQwalcBlywlJGfrX0HLIM4x+VeJeMFMepXQUYYTcce9cWIlZI9LCq7ZyrHy3wV2/NjB61s2N6Ywse3JdM5zXL69di3unGSSWzgHk1q6ddeYtnMDyQVye1cMoc0VI9CLXNy3Me/mK3k8ZHysSCK8r17SJrHV3t0iZ2cgxqgyWz0xXqmuwFbiZhyd2ayfFNjcpa6PrOnoxu7RwpCDJODkf4V6GFqqnJJ7M4cXTck3HdHlrRtHIyyIUZThlIwQfQ1paLqM9jK4gOwyKVOea19W0DVdfvrzVZ7JLQv+9aGPjPrgetS6X4Vih0K9vtQt5llUYgAbb+JHU160qtJ6XPKUJpao1fA+qSDUreJ5H+aN12lvl4716fp1qLoyozbkwGwPavGvCKSDULWUxvtR23MOiqRXsGjapHaqLnzAYhxIAMkg8Y9q8DMLKd49j28FJ8mr6j9Vj+yPav8AeSUnBNVfEfCh1UsVb7o68irfjMfZ9L0v7N8ypOUGT2NUNX3yWe8HBKqf6VyQWkWdkmm2jI0a6Buo0mUqWJTafQ11ej2McF1nJLDIHsOwrkIkIuo2x8wYNXXwTSCRZAAAQMgdauq7LQwjvqi1qINrdQkj5XU+1bulzu0KbQFOOnWsHxYS+nW8kGDIrDgmtXRmLxIfQZ6811YfWF2YV1eR3NgoaNScgkdDXTaHxLgYHHYVzGkvvt1I6+tdBpMmy4QitmcT0OnZsnI5FFIMDqQT9aK1QrEPw4+Kmm6f4cm8OeKLBtT0KR/Oj8v78L+3I4+nvVb4j+OPDXiC1srLwxoy6dYWvLzSRASyt0AJBJwPc815jYpLKnkRoZJi2xUXqxPQAVo/8I9q9g8lhJpt2l9Ghka2MLeYo9SuM4r5F4qrKl7K11ttr6XPxBYitOl7O11ttr6Gj4Z1KPT/ABHpt1K+yOK5jldvRQwJP5V794qtPhb4712bV7rxUYbmbbvVJNiEAY6Mmegr5giswYhvyZByTnBzToXlRJVYnCcA4NGGxboxlTcFJeYYfFPDwcHDmT1PpC9+LWg/8LX8NfYJg2jadA1j9qOQp3DGef4Rgc/Wul8L+BNL8Iat4luxrtreNq9vKYLcOoKxnLHnPPJFfIlsJJwsruRtPAz1+tSQ3bo8u5jgHrnp9K9GGZu96kU3fTy0sd0Mxu3KpC/byPavEzi5+AXhxuv2e9kjP/j1d1o/jjxJq/w+8PXvhO0tdTlij+x31rKm543XgHqOCP518tre3ssJAuGEQ5ERJ21peE/GWs+GfOk0vUJ9OaQ4cRNgN9R0NFPMLTbasrJaeQ6WPSnezSat9x9AnTbnxn8S47PxjaWSzafppuRZ2EhYSjdwrc9eTx9Kvyzpqfw18Vi18L/8I1p/2ZvLDqFedl5JIx0GK+d7LxxrGma6Nbj1CX+08kvcyHcz+obPUe1aesftBeJWtby61PVIjb3EDW7QvEoQqeoC+vvXdQx9OaaafM2/V3PQpYyE3ypNt38z07xXHLqGtfDLVLaFpVlt7YbkGRkMpIP4GvH/ANo3xVpvh34k6+oK3N08oby42BAJUHk9q8x1X9o/xNc+Ho9Csb06fpNoW2SQ5WYj+7v7DnoK8j1HWZtTmeaZ5J5n+YvJISW92PevW+pRrQvU6tO3yse5DL41I/vetnb5Ha+JPjD4q8RaOmkreyppdrkR2lsSkZJOSWx94/WuMe/uLArI9wyyEZwshzWQ+ozW8LpEThiRwcZJ9Paqfmq2POJEigDcx6V6UYxilFbI9eMIxjypWRuxeMLz+0EWzuH3t33EnP1r6a+C/wC03qaX2maf4kmszBp+WtpzCFaMBcY3KM9M+uc18ixtGk++MjcnQJxmtL+2GSFWjYGXfuJFS4RevUmVKMt0fSet+M7S+8QXU+HgSe4eRRIQCVLEjjOR171KsgmiZkOctlTXzdc6qsl2btpjJOQMMWOc4611+heNr2OOELc/MOCnG1q+exGVe096m9TwK+TKb5qbsfTXwi1Bv+EthjZCnmQupJPU4zxXsOqMDbOB6c18v/BvxvHfeLrGSaQRspZSM8dMV9MXE6z27Mh3BhTwlGeHg6c0e3lVGdCk4VOjObvCeR6VjXbg5z+Fat0ckn+Kse6Y5PTNd12z2jMnb5s9fSvGfiN/o+tXgDYYkOP0r1+9m8sHPX3rxX4s2z3erRzx584IOB0IrnrJctmdmFbU7I4nVRG+oPLgO20YP86taZHcSPEyFRbq3A7isieK4QiSUbBKCVQ9gK2dEugLH5uAGHNcVS6j3R6qSkw1k7754wQWOCasabLjT2jAIKt0rO16zuLm8SWFise35mHUc1Np0VxaiUTSB8nKn0GKxlH3FZhf3rFqO4W2lSU8kHGayNdlNxK6YxGwJra07TE1eGVJJGTau4betZ+uWCWlxGwzjBXJOadOaU9NzGrG6OespWii8vG1GXBA713ng+SOG2W3C5LREHcK4K0dZZHVCeCea6jQrk2l3GzZHJGT6VpWi5IihJRZ03iK3+3aW6qwWSOVXAPQCudurt4NMaMsJpEOw5OOK3bnUVu7SaNXGdoJxXGXayPLJCcjOGBrOgub3X0Oio7aokMpIV8HsetdVpd2LbEsz4UfMSegFcZvKIB2x39q37WPz/InZiwEZG3saurHRXIjc0tWuVBuJUO6NiJFK5rb8N3IltI2G4kqOtYWo3CJdLA2EMkIZR2Na3hFY2gTJ5BIIB963obamVe73PRdGlH2c/MOPWt/TZ0W4Tuw5+WuY0ogcABVA44wK37N/nVgehxjNbeZwt3Z2sUiOgJjJP1oqrDIDChy2SO1FWmwMjx38NL/AOG+t6Xd2l3HqGnXs0Ztb5R8vmBgdrY49+DyM16r4YGuWvx6hOvSWbajNYEFrDPlsu3jr345rxuDWPEc3h61tZTdS+HoJ1dVMeYUcN2bHHPv3r3XVpfK+PfhqYHb59gBx/utXm4dUpPnpppc0dOh+T4aEOZzgmldaHzrrgEWu6nGvBjupVI9PnNe6fBDR4PFnwg8RaW8Su73MsasyAkMY1IwfrivD/iDYLF441xATGRey8KevzGvZ/2etbj0DwH4guOkdvfRSP7qQqmufLowWNlGe2phgor63KEttTiPgL4bTV/iHBBewLNHaiaSWKVQy5X5cEH3NUfjHoQtviprOn6faBVkMbRW0EeBlkHCge9e2+HvD0XgXxn461xUC2piSaEkcEyHcQPxA/OpLbR4Z/jzqd+wR7iPSY5Yd/3Q5AXd/n1rv+oJ4dUXo3L8Dt+o/uFS2bl+B8z6j4S1jw3DENU024sPMX5BNGVz+NZen2c9zJc+VDJKqHcxRCwX646V9W3fhfxFrXhnxFYeKNQsNVt5IWns5bYjfBIoJGOBxXNeHv7b8B/CDR9R8MWFjK8yNe6pdXrqoCcnuRnjj2x71xf2Tee7UbfMweWJTSV7W7anzbc3unWyTvqN09pbJEzb4497M4HyoBkck8Z7V4v4n8XTau4XO1E/1adlHcn3roPjL8RR468W3+o2tlHpdnIxMcER+UDHLfU8n8a8a1rWg+YYSW7EnvXuYPBQwi11l3Pp8vy2GFXtJK8u5PqWuZYRQt8gPQVXfWRBFgt+8x09Kw2cq3rIfQdKs22nvc8vx+Gc16XM0j6CMOyCXW38wlWZsDAz0qub+4lPXG6tVPDc1ww8uIheOtb+neApJAu5e/Jxnis3US6nRGg5bI5ezSeZRxyeM10ul+HprtJAFyVHXpye1ej6D8OYJIlY27vIR8oxx9TXpfgz4bWul39vPeRq43BghGQB61m66OhYXufLusaHdaPdL56tGCBkNTracsEeBvnTOY84r6r+KPwzsdeV5oVXLAgbR09K+WPEvhq/8K6k8cqsCCdrdnFaRqX0MquHaV0afhDW7lL4zFykiNv9DkV9c/Bj4qL4otX0+aQ+fCvCv1YdyD37cV8QWuqNBcO56nqR1r0v4YeMzo2sW00M3lMkiFiRkDn+WKupaSOVJxPtCZ94JB4rI1CTy13YxVgPLPGJY7lHRxuB8rg5/GqN6krxNl0bH+yRXDdrc6Fqc/fSszHuDXlPxHmaLWLcDgNASOO4Nep3O/ncE9O9eYfE9PLvtLkdRlhImQc46GuetaVNnXh0/aI44lLqwQsoaRFyKkcr9kygAOBgDjmqNhKBEYz97DCnwS+ZYkdABg15Oq2PaTNGNDeQHnBwKZeqbdU3A4Ix9adoMu+J1J/h4/OrOspG1tG38KsOfSpWkrMh6lLRrwaa7bslWVhiqOu3T6paL5TbCejU4xpcSiKQExE8lWINKlqsUYjQYXJwPStI2Tv1IlG60Od0aErNIvoSOe9brsEiZhwRxzVG3jMF9KmM5Oc1ZuWzA/PI5ronJSlqc0Fyl3T7kiF2IyWXnI4qxLpa3ksVwh5QYI9qxrLVIo22sQABtIx3rodPfELDOdxOKxlem7rQ6otSVjmp0KSOnXBPbpXSaEPMsk9CuOee9YF0rG/lBHJY9K6Dw24W1dMYAY8elVUleKFCOppa5ahJdOmK5PllBn2pfCc2JZV4PzmrWtA3FhaMP4Hxmsrw43kX8yE/xZq8NNS0M8RHRnp2mS4kUdDXQwOcod3TnOK5bS59zLjJ5/Kumtxx2z6iuuWmx5p1lpJ/o6c9qKrWIzbJkkY44orRPzFYufEf4uWHiTRbbQdAsJNI0eNvMeNto3sDwAq9B39zV7Uvi7pGoeP/AAtriR3kNvpsAhuFZAXYgEZXB5HNeGyiWFPPMjNjkrSxySzRiVZTzyEr5N5hXcnJtdOnY/F3jqzk5Py/A7HxzrVvrvivVtRsy/2a6uGlQSLhgp55Haum8A+M9M0XwN4t0q7meO51CJRbhULAsAep7dq8wiufMh3rjfj9ahMlwqMwlHAyVArlhiZ06rqrd3/ExjXlCo6i3f6n0V4k+M2mav8ACq105Lhm12RIYrmMxkcKRk7uh6D86j1v4taXZfErS9ZsZTfWDWCWl6oQg4OdwwfTg18+m8ZbVZCCScUv2u5VS5K7eu3HNeg80rza20t+B1vMqsrN+X4HuvibSvh5ouharqcPiK41SWZGNpp9vOUaNj0BA5wM98cCvAvir8bLu4+G+j+EIZHt/sYk8+VZCPMjPKoQOo69fSrxl+0RdfvCvnH4s37w+ILuEOT836AV6eXYp167tFRsunU9vKZvE4i6VkkclrGvy3kzjcVTPABrPsYX1CXgHrzVJ5Czcc57V6R4J0CM2kbuu535Oe1fQ1KihG5+g4eg6krIx9O8NyKV3ITJKcA44ArrNN8PpGANgZs84rq7fR45Y8KQqL1atTTtHU7PKQspPLMMZrzZV2z3aeEiihpHhiIqHlJAHOFGf1rtNJttLtISDAGkYfx1qaJpb/LEscap0yDzXU22kx2oxJbQTZGFZsE/rUxlznU6cYK1jmbTU4olWK0jYTdAsSkk1tWUmsTjc1pLHznLY/xp0Wuw6PqTq1tHEpXAwmAK0k8WaciKPMZ2Y/w9AapSexLhFO5Yt7O+vI180+Xj+EjJrjPil8MofEelMcgTJ8wdV6GuzHi/TIgiyzRx55Hz5NV5NastWhlNncLJt4O44Na3a1OeXK3Y+JPHHha78M3wDqyr0zjis3QtZazvY5AT1GR7V9BfGnQ47/SZJUQFl5565r5w+zGN/lO1lPIPeu+nPnWp41enyS0PvH4UeIf+Eh8Gafcglgq+WxJ9OOa6qXBOfWvIf2ZbyObwZKokYSpMfNi7A9mHpkdfpXrsjZyP8iuZqzMo+Zz2pJsc46dfrXmfxRgLW2myjolwUz7Ff/rV6tqiKV3HHFecfE4hfDnm4z5U0b/rj+tYSTs0dNKTU0zytIvInw3TccGk04EtImeAx69KgudXS8mdIkYFyMMf4TUNs11ZxTSMQzKcjPf3ryuV21Pbb1ubmkuEUhiCQWHHpVi5Ky2TIx64xiucs9U/fIrNjzGwRjvW2twEicYIx2rOULO9hJ3IC4MwGMYHQU6P7zOwwoOQwqa5VXwwXlcYH1pVZVWVCO3IoTV9iX1MbzUkupnTlDghqdO+IpF9BUcMQ3uoGDzj6U6VU8qUHhsbcV02TeplJtI04dCs5BBOXK74wSVwKngKwl0QnCng55rmQ091bWQ8wqg+QgexrYtmATBb+Hj8Kmce7uFPukMinWS2u5sr5iufmzV7RLkO2QQSwBOK5SNyhuE42uS1avhm48u6dDk4HArSpTVnZihUcnqd5eE/2I7dSjg1l6WuzUZWwBk9KvrOJdMmXA2kCqEYcXUTj5VxyPX3rloO0rG1VXhc9D0qUZQ8jcMDFdPAcrnPT0rjtJl4jPfHT1rrInwoPHsDXqN6nleZ0NlMqQAMRn3FFUraQ+XwuRntRVqQWPOZ7g/Zzk5GO9Pin3QRnAB2/eHeoSuUK9OMDNEC7IlQkcda+B6WZ+CRTT1FjuDDasw7E4pE86WLeZO3QDtTFgJidScBj+VRMJ9qxYG3uwPUU42kGt9tCZpT9gXk4Bq3LIDB8o7cVn+URB5ecHsKsK2Ex1OMYptFIktpmNsFLKox2NfO3xgtGh8SzyHJEvIPrX0BFGY4wCQD6Z6V4x8dtMlivbO+CkxOpjyOxHNezlU1CvyvqfSZHNQxPK+qPJ4YyzjPXtXrHgS5JsmjbqSAK8ojctIMde4r17wHYN9lhAHzSV9XiGuU/VMEvfuj0G11K30K0+13EHmgcRRZxvP+FZd58WHVHLWaQnoqgcCsK7vjqWrSW5YrFEdoJPAFWtQ1jw1o0ey4ZJmA5571wR5dE9T2ZSla6dh9t8X2glAZHi/2hzWzD8XZmXKzF0715fqOuaHrExFpG8QPHTiorS0AnVFkyjHFdDgt1oY06s5O17npOs/EOa7TfkufeuTufH2oOhitiwY8bj2rt9L+Hlhe6JLL9oZrnbkR5/WvOdX0e40yeQRQltueo6U4cu63NayktOh0vhLS73VbhJbrUNqMeSzfyr1G08OhLZXtbtZdg5UH71fM5XxHLOv2aWVQeig7QK7rQLXxvpwingkEmBlopH5P0rV8z3aOJct7KLPYL7SV8S6NJFnfMgKkY5+lfMHjTw7ceHNfuLSUFSG3AEdq+mfCuqXl/fQzXumT2F2o2zAr8j+4Nct+0Z4RjkTT9at13Agwy4GMHquf1q6T94wxC0Ra/ZVln36qjIfJMaHzD03Z6V9AOxb2rzr4DeHX0PwJBLNCIpbpi4Xbzt7Z/nXoLndn8utKd3JnnoqXYEilc9RjpXnHxIgeXwtqSfxKm4fgRXos3T0/CuO8b2vnaLqCjlWgbOPpUdDWDs0fMduLgXykvj5hluoIrp7r/UTAZ+ZCOO3Fc9ENrdifrW+G3M6c/NFXnVXeSPcppqN31KGnWqKImJEjKQQx9c9a6K4kYIxP3AODXOWqbo1IyDgA/nW/Md8AUAkYrCWstSkrRsRXN8PsscgJAbAz2qxazLOpcEgbSc1zsVxu07yTndHLj6c10drGUeJN2WZONo4FOUEtCE0yhEMXBOThulJIrCQjGRnFQXklxbzjKqzq219vSrdiBfRtLkj5u4weKrVK/Qi99LFGB/LiKEH5Jjj8asvOI4lydu4FcGm3VsYrmVc5DkNRLaLdWpR1+63UmmrN3YWaRlkKu5hnJJqTSrgwXJfB4z0pphZSm7JXkFjTLRgLgMTk+lby1TRnG6ex3WnXDPA64IUocYNVpdQNu1vg53YBz9aj0q+hWFnLjy1/umqd4Tc+Ts/vZ5+tccIpS1OmTvHQ9M0WXdCnbHrzXXWcpaFeFOe2K4Pw/MGhUZwR1rs7B90SHOD6V6Ds2eS+5txO2zhh+AxRUETxlPmBzRTv5Fr1PKbu5TS5Ut9NcyeYdxH+sVPlzxk98etQ3es37wOf3UQOUXH3kIAbJOeeM1ox6dbgSQfZIvLZgzR7Rtz61bkhiaTy4oI2A5bcBjpj+VfIe1p3+G/qfift6VtY3fmY6eIrubcqwqAz7UZlIUYfb68+ta+sMI9MZhIUyyq7A9AWAJHpTodPtY5Wd7aNZWxlkHXHSpYraJI5o1UGORizK3IOetZSqQ5k4qxMqtOUk4xtY5y58QDSDJFGjyrG+3ErBiO5AIJyMc880kfiq8aTatuhL8KSCADxnJ79a2bjTrO3gCRwRooOcAdO1TGws1PnfZ497DBYLzW/taaXwHQqtGTvy6nPyeI7lZTFIkUZz5bKCdzHnJX24pmu2MXjDSZtPkQb3idkIPKspwKuavJpKXKG5uNj9kRv1IFXLC40yKbdC8AmKgFs/Mw7Zre3LFVIQaa8jq5eVKpCDTXWx8vT6bNpupyWsyFJY32kEc17P4a/caSF4jwm4MRUXj3RdOv9ekljXbewqGkA+7ICM5/Ct3w3YxtFbqzBY9vJI7V9HKt7WkpNan6zlvtHTjOorOSTOGvJbkCRLZC075+Y9F96wR4ehaORb69DNIcswGSPpX0GPB2japblRN5CY5KD5nPqfQe1Y83w10u2mBUPMjdHcY5qYVeXY910FU+I8h0zQNPWNre1huLrzDlnbjOPT0rqtP0BIGUyKEKqAF6/ma7w+HrewgcW/lovZl6g+lc/9muZjM0KZRTkua0nNyRdKhGGx7D8MPC8d94ckLlvtExCL2ABzjn61yfiDwgkGoOl3ADJGShUjBo8LfFlfD1qkELxyLH95G710F74s0vxxcu8l2lpKV+YnoTSiko6bm09/I4G8+Fdpqh8ywkaKRuqknitXQ/hBqemSq8lwy99wYkYrO8SeKrzwDfxRmZL20k+ZJozkV0Wh/GK31eBVmY5x6gYrZPS0jn5Lu6Z6DpGh3FtAqvcG4TGSswH6GqvxD0SO+8G3CmHz/JKy+W3O7B6VUtfG0MkQQMHB5HOMVeXXhcafdxk5JiYqp5yQMgU00ndHFXi5bof8NtZHivwhaT7kt5oSYZYlThGXjGM8cYroZLI9BOvpyh/xrz34b3YPiG4ubZPLtdSh8yWFfuxzLwT+NekSNnk9acG3ocOMpKlVtHZ6mdLYvyPPQf8AP8AjWPqmiNe2s8TTId6FfuHuPrW/I1VJeOvIzVrTc49UfGtxGLe9mhPVGK59wcVqQ3katCxkHKbeTUHi+D7F4q1GIcFbh+CPc1jMxTnrz6Vw1IXZ7EJWidbYxRzKNuACKu20sbZJJwPl4rG0m5McUeOwxVy2lDCUYIBbqO1cLWrOu+iEsdPa9gviOhkOKmguLi1uoYkiDOPlyzcCr3h4qIrhQOd3JqldB/thQH94rg7vUZpqTbaZKiN1V3a4IYAE/Mdo4NR/b2t5xCjAZG7GOtT6kfMZJM5BGOO1UbuDdfRsMAhTg/hWkGpJIzmmnoR6rdSKI5WJO4H5vQ5pYrxDaSsxwSPzNP1Ah7KLIyMkYqjZuot2BXovGexrXl5o7EPR3uT3GoG402SRjhVHXvxWHBfwwyxOH5ZhXQJEk+iSqw6g5x1Nc5DbQwShsZBPBI6VrTcWmYVXLmTR31lpNtHIJlT53XkZ4P4VWAMd6wPIDnHtWhYvutoH4PasvVrhre5do1BfcCAa4Ytt2bOy2lztdAnxHjPp92u40yfCeuODXnXhqZ5VVtwUnsB0rsbe6lgwqtnIz0r0L7M8xq7cUdRGdyA4z+FFYRv5T/y12+2aKVzZUZWMLztt22SCMD+EU6S4cOXjRCcYI2jkVSkl8m481xkMOcc1IboEgDI4znFfD8jWp/PajctRXCXOSUCsOoAqUKMAjCis+3YtO8m0qDxVkyEKOcik1Z7lRhJiXLW8FtJPOVREXLM1eT+JPHd5LIyWbNbW4OFAbkj1NWfiL4uaa8Om27nyov9YR0JrzyXUAzknke9fZZZgFGCq1Fds+/yjLI0oKvWV5MvNr06yYYswY/MSeTWpZ+KWaUHzDG4GPm5FcoLvfKS3TBpI7lGfaw46Zr6PpY+mUIvoen211A4uL+ZfPBiVV2n2rcW5NtafLlQ8a7f9nNcP4McanpF3ZqVaeNgUVjjIP8A9euvulmGmQCZfLmjXY6jnke9eJUptSaZ9ZzxqQhNLyOi0rW0sbdHkIZsd6bf+NYwhZ3JweRmuGv7x4oogTjiuX1jVXEZCkknjrWUafMzpdT2aOn1nxvJqlyYLRiqfxHPSsHVPG2o21mbSFipPB9Kr6NbxhSGI3nq3rTbp7YEh5AzA9B2roUY3Wmxm5SlG97XMdNUvI1JlbLHuoxV8XWqamI/s00saoOinAJ96QSWjSASFlQetaljq1jZH90u8d9zdK6lpsjkcdrzOg0TTb+/0mRLxvPdOQG6LXKXhudCvGePcFzyB2rql+JFrplvsFujI3YN/Wuf1fxXp+uSfuVKlh8ykd6LX6DlUglZPU3tG8VTXEClGLFR0zXq/g/xGutacp37nXgrn8K8F8P27Wd6OT5bNwK9Q+Hp+xam8YPyM2eelYta2Rm5SnG7PYPhnp8Vh9thRvNkhYgt2BPOBXbu304FZPhqwtbG1aW03EXJ3lmGD9K1WRpBwAFHUscAVqtEedWn7WbluQSHIxwfaqcjcZI/CtGSzYNtEsJkxnb5gzjrWXM3XBB9xyKDFprdHzB8XoVs/HV7uGA7Bs/WuKNwqsysMD+9Xf8Ax8DR+Lw0ajc0SMc/SvOgy3EWWjK5OSp9a55R7noxneKSNnSrxHiBUk89c4rStJFeaXHCe3Y1z0ACx/KQAAOnStO2lHnlAeGAPWuKcGzrjJtHSaLOEM46fMDz3qPVbmMasrBwgOO9UdJud99cRkDIxjPaqXiWdUnt2LBSQR9azjT/AHnKXKatc13nSa34fIU8024GZYH7E4z+FZWlXAEcg3A5rYlKtbxAfeBBxT5XCVhfEroiljaa1CDnEmRVez06VAzsmOSDkdqvQSqAyv8AdDAke1bovbFbSaMyxq23KrmlKTjokKy0Oasotunyx/dIYjJrnJUBZlPQdhXVQhZBN2wd2awbqzKz4AA3dAT71vTlvcyqQ2aOo0dzPpaHOcYx+FUtdYreL7r2+tO0eRra2aJsZA9araw2+WNuxrkt750aKKR1HhWfkdmzXYl2CRemTXA+G5QJFOeTg4rvFbdAGBPyt0rtivcTPPdudkw+YZZAx9TRUfmnA4/SitFsbfMpjvnr0xjNSLF5rbQCSeAAOc1yXhP436ZpWoySat4TXWrFjlFW8aF1H1AIP419nfBjxJ4I8eeHhqfhjTraykh2pcWzwr50DkZwzdSPQ9DXmUcjqT+OaR+QRyWrb32l+J4FoXwx8T6+AdP0a5ZD0lmXy0H4titjx/8ACeX4b/D7VPEXiDUoYHt4/wB1bWw3F5G4UbjgdfT0r60L4HPHbAr4y/b78fM76N4St5MYBvLlVP4ID+pr2KeTYeguafvM9bC5RRjJKWp8gXWotcTSuzndIxZmP1qkbjC4GeelQzZiUZOe/NRPMc8HK4r00rbH1WiLCXBy7dfeiKRnck4PFVrYFt7e1SWrbUkY9B3ps0S7Gpo+uNot/HcAlk+7IgPVa9rklsZLWKO2uTcsyrI2e2a+ep5MocelbXgvX307W7bzHPlP+7YE8D0rlq0ufU7aNdwXL0PRdeKtIVBB25BBrnbqzimjAYhWJ4962tXcreMc5VuaqRJDITFJyrDI9jXnr3dz2/jWhyurLf2aP5KMQP7vWqOk5vARPMY27qBzXaMhWfy3X7o+96imvpEBcSBBu7kCt1V6GP1fm1izItdGs2MPnXTklsMM9q3dJ8O6ZM1wiwy3DLyjICRxVU2pWTco7Z6V0ek6hqtrAIbZCkBOTs7+5rWMr9SXhLvcxde8MGWzljgsTucjYuOQSOn4VDovw4l0S2W5vF3Tt0A5AFeiaQs91JumVmbrlx0rdvbI3sa20aYXHJx3oclHRD+rxhruzzWLTklljcfKY+gB712XgqFrjXLWNBuLSAH3rI1TTBpcmwEM3evRPgtoRvdZe7kQvDaQPcucdMLx+v8AKs4RcnoZV6ihE9mX5Ni+gxxWVqGoRRX6wMgYlCzFuRjtx0rJT4i6dNcRQqJNzsFHAxXl3xl1DWovEaC2uJ7e38ldqQthSeckkVra2jPMotqe1z2Gb7ReWCPJsWTfgdB8v0qe8RY2VEYFQoPB6cV876d4gv4LRJlQ305OG82Qkj6816D4K1fVriacXNtBbQlFZSrE7s1mm3sdte0oXOM+Plio1q0uH4zAFyO/NeUzCIIpUnzOjKe1e4/Fjwxq3iqOwaw065v2i3bhZQPLtHB+bA4rxrVtGm02Rmnjkhm3kNHKpVlPuDWcvisxUtaaZXsohNIUOQD15qzdXdrplwqs6rhehIzWZGl5dOILFC1y52pjtWDr/hfU9Eu1W+iLPIMq+dyt9DThSU9ZMcqzgrRR21rcrve4U5EqcbeSDVPUpHubSN5gThiFz1rmtIlu9I1G3t7mOWKKYghWyOD0Irq9VB+wjqdpqXH2c1fUan7SL6FGGFbYbkZhu5OTVrTNRzcxLJkHdx71QEu6I46gD3zU2nOCwLIMq/HtVzs02yYtppJnUySK8U6g8lSfWsqS6xLEOoZTiruALjA4ynJ/CsUgGaE5wR0GcVywik9Tpm3Y6SxmBQktyRzVHVpREIT3DjH0pbGUR4JbAKms7WpJSU2gFO59awinz6G0mktToAVE4wOCvSotTXdBG6kjB/CqUl4VtElfCAYw1T3U2+zjIbKnn8KXK07g2rGlpxaJLd1JXPGTXZ2N3LMyo0hwcHGa4+02tpMDjB2tzjrXSaewypHT+lXBuUd9jmqK0rnReWD2Bx60VCMMATkcetFdSSsLlfY+aNMvbq7njt4Imk8w4XHOTX2T+zD4N1vwD4p0i+Vwy6ij22oWhOQoIJRvqCP1rynwfbaL4ct7NRYia7UAoEXfIx716h4e8d3q69oLw280VjLKHTDLmQhsFW5yo/WupV6jmuRaHK8JTjTfM7ysfW2ua9b6BplzqF40cFtAhkdj2wM1+Wnxj+IUnxE+Ieq63MSxuZCkK54SNeFA/Cvoz9r341ywaNH4atZgJ5QPtGw+3I+lfFa3ObgszYI4r0qk+bRHkUYOK5mPuyX4A4zt5p0kISAAEZpJJgzqARhQTVc3DALnkZrM6LaFtAkVqxHDHiltow4nj6kAU0SholzjknpU2nR7ruQnhdvNDFYoXEWFc9ulQupjgiccENjNad9GrWrFAc5JqhaSpNGUJBB7Hsako7zRdZ/tnTEMhzND8j5/nSyziJ8ls8YBFZnw1tml1W9tGR3SWLkqCdpHer2p2zW07L6cVxVILmsj06NWSj5G/p95FeQeXN98DKv3qzHbosZ3MSOxzXHQzvGw2n8KvR+IJYgA2ciuV0pLVHoQxCejOxsYIXmUNgIPXvXZ2Os2cRVfLRRjBHrXkH/CXNGPlypHUDmoW8UzE5BJPqe1axhLqipYimup7sur2PKgqvPTualu9UtbPT3nDgzY4ANeEW3ie6J5yT2NdJpmoy3UatcsSg5x61ryO+py1cSmvdOgsrO78U6xBa28ZklnkCoM9Sa+tvAfw7t/BXheazysl5cRkTyjuSpGB7DNeIfs76Yb/wAbQXMiriGJ5AMdOMD+dfS+r6lbaJp9zf30yw2ltGZJZD0VR1Nehh4pK58/iakptRZ8dyzpp+o7pDhYpMknsAak+J3j+x1iex07TblJBLnfdgfu1J+6hb3Neb+MPHsGt6vfLYTH7E8zmNiMF1JOM1yE2tXFlbPZxS7beRxIydiR0qXBPc6qM4JvmbVlpbv0OzF/feH7h7W/ha3ZjjJTPHqPWvTvhXqVs9lOPtsMjs+Fj3YYfgazfh3r8PjXwZPHqtnBqD2BVDHnE65+6y+ory34lWt1p/jG9nS0fT3ba4jTjjHXj865I03KTTNXKpKjzW0vY+qbX493PhKWXTbEmCO25Kp95j3Jx1/Gsb4zT2/xf+H7+KWto7PXdP8A9cUTH2mL+8fcev1r5x8K/EW50m686eQyGQbGdgGde3U9q9/+F3jS3uTfXWpxJcae6JEYn5Rx3GD1GKwqU3Sdzan7OVO8PiPnnS5o476IyymGNjhpU5IFenaDb6XFp4jmWO82OJDJKMng8Y9K7P4m/C3wz4tY614WubTTL5stJpjHZG+P7nof0rwbX7u40e22LmJt2HTHOe9ZP3moLc7qEJT1sdh488Nad4qiS7spUtbiB9yYHDZPIrFv/DN7/Zk+wCYqc7e7fQU/wzetPpaSyRlQTkBh+tWZ9UkRvlY7QeTnmqjFpcsuh9jhMooVaHtK102eeC/itZjDOfLYkDB/h+taflyWV3LFKoU8MCDkEeoPcVf8QeGrXxCzXscbfa1HzIGwre/1rDtL19KH2S+iL2zkAHOXh919R7V1OEZx03PisZhquAr2mrrozp4ZwJUyevc1h6hCWmEm7BjztIOOK0AxSVQkgnRTxIv8S9jWfeKJTcROM55HPIFcCvGZU3GcfdL1u4aJBJJtY56d6S6fzLMHO4p2rGis5WClJAFjwACa2LY+ZG6uQS3aonaLujSOqs0XY2WawjVgGDLyD70n2J0QhXzEg4U9RQdsMEZAxgDpUtreB5SgHJGM9qxu7aGjiupd0wOtpIyHI3fN9K6zTpt0cZDdAAK5TS7pYPNhYj5uc+9d5oTK8MZIUADuM5rSF9U0cNR2ZoJISgO8c0V0EACwoAB070V08pKqnlHh/VxdRLBK6tAP+Wi/fC+meuKsaj4wj0HRL6KK4QOrb4vL+8p+v0rwqy1zV/DAHzedangSKcrj69vxqTVvEtxq8BXasMXovU10+wafvbGbxSlHRaket69da/eNPdXEs7gcNIxZsD3NYJkJjJwc57GpJCyKewPc1PHat9l3kYPU11pHAyvBMGLbm+UVLdXcbKoQewqGG0Zo3bNVUiY3ITGRVCNVLtfKVF5PUk1pW5IRFXG5+SfasuK3MQY44xjmtJEaK2VwcEjv3pthYikuwImU9OeKwLeVo5iV6ZrSv8wQCPhpWGSo61b0C0Wzi8+eMM78KGGdopqN9CZNxVz6Y/Zj8G2GufDnxBLfxMBe3iRrNGdrp5a5GD9WPHQ1lfEf4R6jpE8tzZj+0bTrujGHUe6/4V2H7OPjHR/+EIh0KO7VdUjmklmhcbS245BX1GMV6Dq0RfJBwD2zXn1tJanTQrNJ2PjK6haFsONrg8gjFUzOTldoI9a+jvFfgfTdb3maFRJ/z0Thq8p1/wCF+oaaWa0xdxD+E8MP8azjNbdTt5oyOKRVk4IOO2akWGNflJolhktZXinjaKQdVcYIqe2AkPQZrfmtsT7K6vcv6RYpLcIAm7kda7MaV5boSAQcYrG8OW4ZwcYxXe2Nn52x5BgL7daTfUhU+h7D+zlp5tr68mYf8sMZPuas/tDfEX+yrdvDX2WOe21C2PnsWIYKTjA9OnWsf4Y+K28P+M9G00ANbapIIJQeoz90j0INcT+0PPc3XxVvrVRuFmiwtk4HFd9Cd4eZ5leLVTXY8pXwx4djfI0x8+87Gp/7K0QLtOjwsF5Bd2P9amMZ59uKrXau48tRknrk1a1Mb2LnhfxVa+GPFlmba1itLe5UwTLFkBgSME/Q1d+Pdp/pumX8IZS8ZjJ9SOlJ8O/gZrHxj1yaLS9W0zTZLLYCL+VkLE5I2hVJPSvfda+Cfi34dac9z4tj0bxFpLQFftNijO1gQP8AWMGUEKc9RmsJPlbaPVo4unDCzw81vZo+UtD+HVzrqC4vJFsonPynaSx/AVsXEdh4H2wp4gFzK+P9E4JHr83QfQitrUB4w1OZrLwloGq3wDYF1a2ckgf/AHSFxiqWj/sZfGrxzdPcr4N1COSUl2m1HbAGJ/3iKSUp/EYe0p0tYvUnm8ST2um2t3Bc+Wkj+WXlbG0etcZ4ju7K61KJ31SLUI3+Z/IVgQfTLAVa+Ivwg8T/AAe1WDwx4wiGn6tMgnSNZhJGIz907hwe/TpW/wCD/wBlHxr4yhtp7E2Qt5yNk0t0qjB7n0rN0qdJ889y4ZlVw6ajKybI7PxBpk1gkaRXEcyjbHGiqU9snOf0qhfXFyyu0VnctGvLSmJgg/Gvp7wF/wAE2PHkFxH/AGxr+l2FnKMtJbXYkdfTA288471sar/wTP8AE9yJFb4laKlvnK+akpb8cHArX2MGr6ns0uJcVBcs3dfcfIdrePEEcnIPo3BrYs/B9/45uRDoOkS6nqL/APLrawmRn+mBwa+mfht+ydp/w1tr1fHNhpGv6xHcHyVbUC0flfwt5YK9evzZr3fwxe6n4Us518P6Jo2kW3TfZeRGv0JBz+Zp08MubWSX5lYvP4Ymg6bo37PzPzp1D4YeKPBXGveH9S0OFshXvrZ4wDnoSRjHvWFqGmzRSsXZEJUdWr9IPEnxA8Talbz2F/e6ZLYSoUkidI5iwIwQc5FfMHi3QrX4bS3V1p8djqmg3APmWsypJcWTH+JCwyU/2e3anVwkHLmTPDwuNS92cXp2PnSCCVYXXAc9cKcmiCXBxn5h0FbHiLw+2iT293HqljfR3OXT7G5JUHnkEDFcjb3LG+ds5wT1rzKtDlu0e5OpG0ZQ2Z0xlLWq54P1plkx+0KffJxUUMmbUDucmpLaQLOCenBrgt0Byu9Se6zFKOeN1ek+G5t0EZ7Y6CuM0fQ28TeJbPS1ZoRcyhN6jcVB6nH4V9IeGPgNZKkcTa1dnDBWP2YD+tbxkox1PFxGIp0p8smc1aSKYQfXmivoU/s0+HrAmBvEOrsy9Sumgj8DmivVjh6tloY+3o9z8odPvbi3fZGS0TcFDyG9sVrXkCyRxIIhE/UqOgpumaZ9ihaacDev3VHrT0maaZ3JyBxgVpLcUdEQTWu5gONq8morycRWxGSST60+e48u2dm4JPFYss7zMFznNPoBpQOioox1Xn61XtsLcl1wSegIqGRnjhK8jFTQp5aKSfnbnFMDUUA7EznceRVk7ru6jtIMFQQqgdz7Vlm5MEeEX526EV1fw/8AL0DUF1TUbQziIZigLYy3qauEOeVuhE5KETtviJ4N0jw54d0BI7SP+15Iw9xOOuMdDXmN7MGbjj+ldLrviWfxPfTT3ch84n7ueFHYD2rmrhdrbSc+4rrnFXvE44NvcqR6hc2FxHcW0zwzRncksZwV9xXu3wx/aGN+0emeJnVJsBYr3oHPo/ofevBZlABK/rWdONhyMVxVKaknc6YSsfclxcRXQ3I4dD0K9KoyWvnADbla8A+EXxd/sWaHStZkLWTELFcOc+V7H2/lX0vaCO6gDxFZEYAhl5BHY15jpuDOtTucnq3gnTtdjMV3bLIxHDdx9D2rz7Wvgpq+llrnSg2pWw5MSD98o+n8X4V7qlmXO1Fyx9K6rw5aLp+GODIe/pWkLvQr2jg7o+UfDyS2lxtdCrKcEMMEetegwSxrCpQYU8njrXvOu/CPQviGskzhdK1JULfboVHOB/y0X+L+deL3Pw6123ihezaC/tJWKrcxsVVAD95geg96JQkvQ64YiE73dmX/AIMaZdeN/jTpKxRsdP0rF3dS9lC5wPqTjFUfjVPa/wDC8PFWnyfubqW785BJ/GrqCuPzr6r/AGdfh3pngvw8yRbLuW9YSXF4hDeYcdiOw7V8v/8ABQXwcdA+L+j6tAxtzf6egSUcK7RsVIJ9cFea9XCUHP3VuzxMTWUpt9DkB4JvzL+7t2Knk56Clk+HGovuk2oAOfvc4qn8MvHdpq98NO8W67qmkxLHtjnsIkkJPbcG7H1Ga9E/4TD4NeH7mP7f4o8T6jcpy1uUVEJ9OByKudOVOVpLU5+Zz2O9+BPhXSbeWwbVNCbRJ7cpM2sOkkSzkHgu5+Uge1em+PPHFtceP2tINStruwEQiSe2cSxMcZYZHrnBHtXhmrftafC4aFJoyaLrWoaY4Aa2e8aNGx06Hp7V5tqfx+8NXeowt4R8ISaRCsZSWOGcuXOflbnOD2z3zXK6ceSSve5NWE6q5Xofo58MvGF5qek/2ZZXCSfZ1+U7du1T0/Xitu9fWbUSyXms29kW/wBWCQAPrmvzBl/ag13whP5f2S7sppEB2SXkillPTIXHFbFr8cfHGt6Va6lappUcN05WHzszTMw6/KxJqqNSVOmoS3RnDDTjFJs9v/bi8Dr4y8NaDqlhdDX9csrh7WT7InnS+U4yOFycBh+tch+ynovjDSLK+s7vw5etCki7ZrmEptOOVwcY45ri7Lx58V9SuJYZ/F8GgRoAR9mQLuB9AgqnPo/iu9aU3fxH1OQyuXdbdHG4+pOaVf8AfKz0Np0eeHJJn6NeFb/SI/DyjxDMlpcq3Mb3CjgdD144pmpfEr4c6Q5N1qWlqqrtPmXgyR781+asnw6mvHY3Ou67qOf70xUfzrL1X4KJfTQNbNdwoufN8+cuWGOMenNaRqKnFQ7CjQS0bPs74z/Ef4UeLdXtb9fF+naXLDD5MnlOZN4B+U4A6jpXmGteNPhJ4kuba0tvGmvvfYKBNHPlrIf90rjNfN8X7O00rnztTYITwFQce2a6/wAEfCGHwdeNcw3TTzsMbplDbfcehrnlyylz21Oxe7Dk5tDb8XXnwn0vUJbPUNY8eT3CY3Ry6lHGACOP4a8G8Wahok1650a8nmhDkKk773C54JbufpX11ANNcLLe2+lSPtAMtzbRFjjjksM18wftGQ2Z+JezSobaEyWsZZLRFRGbnnCjAOMV4eFzKpicTKi6Til1ex6WExUKEeVQ33bf5HJWOrKW8mZTIhOcDqPdfQ/zqGPRNQkuHmtLWa8gyT5sEZYAe+Oh9qksfDtzp2sabHMwuHvImdY1GcN2HvXuel6Lq9nLZahosQ0/WJbUJc6dMhSK7ABG1h/CxHQ17jhzqzJq105L2exzHw4+FkXjjRjey+LdB0BRI0fk6lM4lyO+1VPH416Npv7NnhRCr3/xZ0NRwCttC7H9a+eZopLa8nC5jUSkOjfejbnKn39+9dND4P1aSziuomRlkXcoZsdfWvO5YxfLyms5Nrm57H0lo3wp+HfhPVbfVLD4j2F3qMOcC4fy0GRjOApP616XoXi3w3Z3Vqbzxxo00CyBpAk7kkA9B8tfn9L8MvEUl07s0DKxzu80mrVp8K9VLRtPcqBu+ZUOTj2NdLo09HY8apRVWXNN3Z+p7ftEeBFOE8VaYVHrI3+FFfm5B8ONCEYE0V48g6t5vWivQWIlbY0VGK6nkninWxq2r390qLGbiZpNiDAGT0xWQLv7PCiL97JJNUJJmaRnJ5JzUUkpbHcnisWbliW5NwixY6jOarw2rJPECOfetTTtDub1w8ceEHHmPwBW3B4at4iZLm4aU/3EGMfjWkacp7GUqkY7s528iee4jtkUuevyjrWvH4cnlZHldbeMAAq33vyrW8+K0TZbxCNcfe7/AJ1RluHbkE5FdUaKXxHM60m9EXYLezsDlF8yUDh37U2e9LgndntistrhvU1EbggnPetLpKyM0m9ySW5EU6v26GnTsMVRlfzY2U9u9SQSedCpI3EcVPMnoXZrYYYdx6moZbdXUjBJ9atEMT1I9KiJwCcgHHFRKNyrsyJYtsm0j5c9a9r+BvxnHhy9t9G12d20pyFjuG5MB9/9n+VeP3K+YxPHTHHaqZJVuf51zygnp0Nk3a6P0ss4bSWFJYCrxuuQ6HIYdsGp4U2OeP8A61fJP7Pvx2k8PyweHNan3aa5221xI2TCx6Kf9n+VfWNvdpPGGUgkjPBrklHlehd20UPiR4z/AOEM8CX00cgF1dD7NECcZJ6/pmvA7bxBqvizTV07ULmY6QgCmG2kMYP12/e/Gof2pPHbHxBpWjQkFLWIzSKG/ibgZ/AfrXn/AIY8f29p5cc6Ogz95DXVBpJIlxdtD6N+DPjjU/hBfRyaHPJf6PuzcaPdSkrKvfZn7jehH419D/tJeC9A/aT+BVr4n0BWvJ9ODzRxEYmi4/eRMOzDA49q+QdC8QWGrxL5U4Zj/fG0/nXsP7P3xZb4cfEa20nU5seH/EeLacO2Ujm6RyenOcH2reNopNHJJSTv1PizUYX8O3aQTlntjzHMB88Z9P8A61aovI7+NYL2KO5O3KMRkOvsexr6O/bX+BsXhnUZ9a06ER20km9kQfKCe9fJOm34tGWOVs2zH5Wz/q2/wr14VFiF7Op8S2ffyZzzp8nvw27f5HT2Ph7w69xme0d8/wAHmsBXZ2Vr4U07T5E03T5bC/Lod5kLBsMDyfpmuGEjSHaxxNnt0apYdRZT5cnIHHPWuKdGN7NWNIzk1ufR9h4c8M6/ItzFBa38xAG9sO36810Nt4UtIFAhsERR0CoBivl231mezZZIZmiI5BUkGu98MfHzXNCMcVzIuo244KT8tj2brXLLDdYstVO6PcI/DYU/Ja4J9RVlfD05A/dhc+tU/Bvxb0LxkqwrL9ivj/y7zn73+63Q12jHI4Nczg07M05na5zg8OSKOWQZ54o/4R1RwZSPoK33cLn0qIMQeamy6hd3vcxj4fgB5Zm9wcVI+l20KFlj3t0Az1rQdsE8CnWyNLdxIiLIxYAI/Q09kW9znPFkUsGu6eILHSbZVjVjEW8xZAF3NuZu7c9OnQVznxl8HeFvi5pM1xa6RbeG/EtlEG019Pu1kS5iwT5Uu7BLehHToetelfEXw94eSytZdStb62ukICiJUKnI57nNc9qfhfwvqmmi8tbW9gudy7HXZtAAwcr39e1arlBNxSZ8O6N4jfQPENjekzSXVjOGXz8PsIPPyng/Q1tap4y17xr4qvNRk1uRLidwy/vPs4YdAFUYUcY4rnfFNg0HijUkEgfbcyfNjGfmPas4hwylWGRz9a5ZO9zvbu72OkupLyxvW+0K8d0T83nD7/1z1FfQHwq8QaN4m0O30ySDyNTt0+eGbgyL/eQ/xCvB4/ifrVj4dTSxJA8MJJjkkhR5VB/hDkE7favXPhroq/EL4Y2s8s/2TW7SeQ2moW4CvC2cjp255FKmkZVWpJK1j1I+HNPZebde/rTP+Ea0/tb+33iK53wb4zv5dSfw94liW11+FSUdf9Xdx/31Pr6iu2J6jgA9Oa35Vsc2ysZJ8M6d3hJPsxorTYjPOPzoosbKx8G2ulXOoZEQEaf334FbVjoFlYqHmb7TKnPP3c/Soxr+9gAFSPptA4xSPMJNzxH22f4V1xjFeZyylN+SNKXUgAVXhMcKOMVQm1DJzu9sVnzTlc9Q3bPGKrGbc+Mn61o52M4wNI3m4EHP41H52MZJwRzms4TN/eyRT/NLHk/hS5uhfKyzIdnfp0qJju9++TSI+4jJ/Okc8EdxSb6MpeYh5I7Z461RmmurUkwgMmat7sk+/ak34xnr6Vm12KKkWuzR/wCtgJHtViPWrWYbQ3ln/aFBVScYGTULWcc0oBQEjrikpSHyplnhlLDkHnioJFHO4de9TMCORwPamOpx1y3tTfmCdtiBUCsDnaK+lvgF8ZHnih8PaxcFp0GLWd2+8o/gJ9R2r5sCdzwfSp7W6ktLhJYXMciEMrDjBqJJMZ738ZPAt34i8T3Gqxo7hx8xHVQK8p1Hwze6USzx+ZCOjgcV9V/s2+ItL+LNlJBqco/tywjHm25wPOToJB6+47fjV74m/B2Sze4u9OgVoTljbqOnrisZRa1Rakr2Z8t+GNdfSLlGYZjB7NgGvRtXvh4i0iCSzS58yNhIGEZwpHcHtXlupwHT/EE8ht/KQEmOMjge9eieAdQW4tJJlldZMbdrHgnvVxd9GTPT3kfY/h7xRbftAfAA2mqYk13TI/sl4D95lxhJP0H5V+e3irQJPDviG80y5QjZIy8jtmvrn4NahP4S8VW9/FGzaXqSm0vIxyvP+HWvOP2vvAg0XxDHq9uA0M3Bde5//VW0JPS/QhWd0tjwPTL0o32ObJkQZiY/xL6fUVfN4F+8PoR1rBni8+OOVGIlXlT71etr0XcAcfKw4dAeQ1es/wB/DnW63/zOLl9nO3R/1YvWV39quGAz5Y7k1YkZckEEY/WsqGf7MORujPUjtVxZxMm5Wyp75rke5q99i9ZajJDKMMykdCD0969b8E/HTU9BWODUC2pWQ4w7fOo9m/xrxZJMDHrWhbyZiAGfVf8ACm+VqzC7WiPsfwl490nxpbtJYT/vU/1tvJgSJ6cdx7it15ADXxHpHiu98Ja7aanaSGKaJ9rAdGHofavvPwF4Uk+Ifg7TPEGmajaG3vIt2xywZGH3kPHUGvPnDlemxoncwXl3HOAOOtSabcCPUbUufkEqkkjOBnnjvXYSfCDXMHZJaP2AEpGf0rl9a8P3fhfV4Le9CecSGAjfcD+NQo9ytWrGv8cbK1ubK2k0i6sr22O0l7X5DnPOUJyP5VzdtYTXWhBwZpJvMAIQcYxz9TWj8Tr61j8NW8wka0uFOGV8Y/TmuA8M+M7i81K0iWUqEc5Kjcp44P0rzauLhQrKkc0qtkonxx4lkY+J9V3ZVvtMgIbr948GsOUEFcHBHeuv+Juk3Fv8QfEA8raPtkhB9QWzmuVNrPhgyNgdK6Gtbo9m9ynLIdvIx7DvX0f+y5e7/B+o2xPMF3kD2Kivm25hkyGCH8q97/ZYmcQ69AVK58t+R9RWkdDGptoep/EbwkfE2kC4s38jWtPP2iyuE4bcOdhPofSrHgfxOvi3w3a6gF8qZgY5oj/BIvDD863/AOIgAgd/pXhPwt8SzaT8Rtd0W4nUWdxPI0W44Xzd3b3I/lWmxz6tXZ7odueTj8aKrs5U4oqzVWPglSCOPWlN6YyQCS2e1QzHYAM8D0qBUyc+lXcz5UajTtdr8xw46GoNxXIb7w9KgeURNwST6VIspnXJHI6H1qm+YSVkP8zLdTjFCueDmq4kHTuKPNyx796T0GnpcvJLjIHTtShsnOfY5qoJtpGT0p4cgE5xzVKXQlp6MmZuRjt3FNAJJz1/nTc5ZQeuKC2FyeuaL6lPbQGfb82cEetPgZTGzBssx5FV5Rx1rPe4a1m3DkdwKTkolcvMbTZxgdqTB5z8x9KS1lS4j3Lnp0NSMQQCOg/StN0Z26EbMMYA571GWz70+ReMg81ERjnpmp0KsdB4I8Y6l4C8S2Gt6VOYby0kDqezDurDuCOCK/RHw74xtPjB4FtPEOiybN0eJ4AcvbTgfMhHseQe4Ir8zTnqK9d/Zx+Ntx8IfF5acyT6FqAEN9bjnj+GRR/eX9RkVFwa6mn45sHmnlkkQC5d2zge5zj05pvhO2+wBVc7CBuY9PrXUeIEh1fXtSnhO63W4kZCRj5c5HH41gakWsrc8YMjYJFJ6MSlzKx9D/s2eIrPUfEU+j6iyrFfYNvv4AlHQfiP5V1P7Tvw8M/g7UYQfO2J5sZbqMV84+GNSa0FnJDK8NwJRIrpwVIPBz9a+pZvErfEr4dtfyZ8+FDb3cZ6FsY3A+9U9UKL1Pzjtz5UksEgw0ZI5qrK7WF4J0yEIxIo7itnxhZDRvF99bgnbvJx+NZd4PkIzniuijV5HeO6FUgnozX0q3m1m/t7K0US3E7YiUsF39+CSBVjXfDWq+E3iF/ata+bnarMD07HBOPxqh8P/FJ8KeILa5+zRXptyzJFMoIIIIYAkHBwcg9jXtnifwjpviz4PX/j7Q4pH0S3uo7SfzCEmt7thkIwP3hgn5l6j0PFRiZOlVjKK9yX59UVShGUXd6o8VinBBOceoq9Z3IyDnGTWIrgKwHTpU1vNsbqea2TM2rbGnrUZkgYrnJGc+9fTf7CnxUa11a+8K311i3vE861RzwJh94D0yP5V8zOTPa4PTFUfBfiO68LeJYLyylMVzZzLLEw/vA5FTUadrBFJr0P2FS63EEn9a8T+KTahrFrqE+lSKmoW8okh3ANuCsMrz6jNdt4H8bQeNvA2n+IbdWSO7tfN2sMFWx8w/A5ridN1A3E7k5yWJNY/EmKTstTN+INrNqHgD7TPDE8pxiaNCGX2PavLfCfh64t76Kd7e4ltFYMHjYqD6g/419C3fgoS6Lfm1dw9ztaSMt8gIHUA1gWXg2/j0xIzcRzzHneCRj27V41TARq1FO+v5nPKMbXW58a/GGC6sPiBq/kKtxDJOWWB497R5APJI/lXEtJqUuUOnWaluAdgBP61798aPCet6F4k+0DWLiKCZQFjhlKgEDk157a+EE1SZpZ3M0mQXkkcs3612vR2R6cX7t2cnZ+CdQvgkLS6ctwTkWwfzHUerbchfoTmvUvhtpMvge5naaSG4hmjCYij2EH6k81HY2CaVD5dqixIOrDqaq3s9wQVWUjnHWumMLLUyb5loz0W68bWVtG7hGZwDgDGSfSvl3xFDqsnxDk1SziNtO8/nx7VxtOc5wTivSWhu2yofAPUk/rVIabI6STuQ0qN8uO1Tyq4J8p6b4X8az3Gko2qW+263EfKQcjAwTjv1ori9Pv3NpHuBY467sUVp7NPUq6R//Z" alt="程立民 教授"></div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="stats" id="stats-strip">
+    <div class="stat"><div class="num" id="stat-pubs">0</div><div class="label">期刊論文數</div></div>
+    <div class="stat"><div class="num" id="stat-talks">0</div><div class="label">研討會論文</div></div>
+    <div class="stat"><div class="num" id="stat-committee">0</div><div class="label">委員／人才庫職務</div></div>
+    <div class="stat"><div class="num"><span id="stat-years">--</span></div><div class="label">著述年度跨度</div></div>
+  </div>
+</div>
+
+<main class="container">
+
+  <section id="about">
+    <div class="section-head">
+      <span class="section-tag">About</span>
+      <h2>學經歷概覽</h2>
+      <p class="section-sub">長期深耕行政法制、性別平等與醫療政策等領域，於多所大學擔任兼任教職，並長期投入政府部門法制、榮民服務與消費者保護實務工作。</p>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <h3><span class="dot"></span>現任教職</h3>
+        <ul>
+          <li><b>亞洲大學</b>財經法律學系　兼任助理教授</li>
+          <li><b>國立勤益科技大學</b>資訊管理系　兼任助理教授</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>學術經歷</h3>
+        <ul>
+          <li><b>國立臺中科技大學</b>老人服務事業管理系　兼任助理教授</li>
+          <li><b>國立彰化師範大學</b>光電科學研究所　兼任助理教授</li>
+          <li><b>國立空中大學</b>公共行政學系　兼任助理教授</li>
+          <li><b>Journal of Pharmaceutical Sciences and Drug Discovery</b>　編輯委員 (Editorial Board)</li>
+          <li><b>Addiction &amp; Drug Abuse Open Access Journal (ADOAJ)</b>　編輯委員 (Editorial Board)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>公職與實務工作經歷</h3>
+        <ul>
+          <li><b>臺中市政府法制局</b>　秘書室主任、編審</li>
+          <li><b>行政院國軍退除役官兵輔導委員會</b>南投榮民服務處　輔導員、專員</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>研究領域</h3>
+        <div class="tagwrap" id="research-tags"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="section-head">
+      <span class="section-tag">Publications</span>
+      <h2>著作目錄</h2>
+      <p class="section-sub">依期刊論文、專書（論文）、研討會論文分類，涵蓋行政法制、消費者保護、性別平等、長期照顧與醫療政策等主題。</p>
+    </div>
+    <div class="pub-tabs" id="pub-tabs"></div>
+    <div class="pub-list" id="pub-list"></div>
+  </section>
+
+  <section id="talks">
+    <div class="section-head">
+      <span class="section-tag">Conference Papers</span>
+      <h2>研討會論文</h2>
+      <p class="section-sub">歷年發表於兩岸關係、法制、消費者保護、電動車產業與醫療政策等主題之國內外學術研討會論文。</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:44%">篇名</th><th style="width:38%">研討會名稱／地點</th><th style="width:18%">日期</th></tr></thead>
+        <tbody id="talks-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="committee">
+    <div class="section-head">
+      <span class="section-tag">Service</span>
+      <h2>委員會與專家人才庫</h2>
+      <p class="section-sub">於性別平等、申訴評議等領域擔任政府機關與學校委員，並登錄多項政府專家人才資料庫。</p>
+    </div>
+    <div class="committee-list" id="committee-list"></div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="fname">程立民 Cheng, Li-Min</div>
+        <div class="fsub">亞洲大學財經法律學系／國立勤益科技大學資訊管理系　兼任助理教授</div>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:0928961315">📞 0928-961-315</a>
+        <a href="mailto:lawlimin@gmail.com">✉️ lawlimin@gmail.com</a>
+      </div>
+    </div>
+    <div class="copyline">© <span id="year"></span> 程立民．本頁彙整自本人提供之著作目錄／簡歷，以及國立勤益科技大學 Google Scholar 學術檔案、臺中市政府性別人才資料庫等公開資訊。</div>
+  </div>
+</footer>
+
+<script>
+const PUBLICATIONS = {
+  journal: [
+    {year:"2026.04", title:"護理實習生於醫院遭受性騷擾的法律對策", meta:"性別平等教育季刊，113期，76-79"},
+    {year:"2025.12", title:"公務人員職場霸凌防治之法制芻議", meta:"中華行政學報，37期，101-115"},
+    {year:"2025.06", title:"性別友善校園之營造及法制芻議", meta:"中華行政學報，36期，135-151"},
+    {year:"2024.12", title:"長期照顧政策的策進與展望", meta:"國會季刊，52(4)，111-146"},
+    {year:"2024.06", title:"論虛擬資產之投資風險之法遵設計", meta:"中華行政學報，34期，127-137"},
+    {year:"2024.01", title:"從不施行心肺復甦術同意書（DNR）論醫院風險管理", meta:"12期，121-148"},
+    {year:"2021.12", title:"美國航行自由計畫對中國與臺灣領海主權影響之法律分析", meta:"科技法學論叢，17期，155-187"},
+    {year:"2021.08", title:"環保與消費資訊間的拔河—簡評無包裝商店之消費權益", meta:"消費者報導，484期，12-15"},
+    {year:"2021.08", title:"不該碰的別碰—簡析民俗調理業人員妨害性自主司法案件判決（與黃玲娟合著）", meta:"性別平等教育季刊，94期，136-143"},
+    {year:"2021.06", title:"原住民族傳統領域劃設之爭議及建議", meta:"中華行政學報，28期，153-167"},
+    {year:"2021.01", title:"露營場管理法制化之必要與建構", meta:"治未指錄，7期，169-193"},
+    {year:"2020.06", title:"地方立法權之美麗與哀愁—以地方自治團體自治條例受中央函告無效為中心", meta:"中華行政學報，26期，141-158"},
+    {year:"2019.07", title:"不合時宜法規之檢視及建議", meta:"全國律師月刊，23期，104-107"},
+    {year:"2019.03", title:"簡評南投縣民宿管理輔導自治條例及民宿管理政策", meta:"國會季刊，47(1)，23-41"},
+    {year:"2019.01", title:"電子煙之管制策略芻議—兼評菸害防制法修正草案（與宋名晰合著）", meta:"治未指錄，7期，21-43"},
+    {year:"2018.10", title:"機關受贈財物之界線與責任—兼評臺灣高等法院99年度上訴字第2019號刑事判決（與黃素昧合著）", meta:"財稅法令，41(19)，37-42"},
+    {year:"2018.07", title:"A Consumer Protection Perspective Commentary of Taiwan Tobacco Hazards Prevention Act Amendment（與 Ming-Hsi Sung, Shin-Wen Wang 合著）", meta:"Addiction &amp; Drug Abuse Open Access Journal，1(1)，1-7"},
+    {year:"2018.06", title:"臺中市政府「法律行動專車」赴和平區三叉坑服務紀實", meta:"全國律師雜誌，107(6)，104-105"},
+    {year:"2018.03", title:"消費者隱私保護及網路業者管理之研究—以被遺忘權為論述核心", meta:"消費者保護研究，22期，139-184"},
+    {year:"2018.03", title:"A study of regulatory policies and relevant issues concerning electronic cigarette use in Taiwan（與 Tzuu Hwa Jiang, Matthew A. Hawkins 合著；本人為通訊作者）", meta:"International Journal of Health Planning and Management，2018;33:e119–e130（SSCI）"},
+    {year:"2017.12", title:"An Empirical Experience of Developing and Managing Electric Vehicles in Taichung（與袁貞貞合著）", meta:"人文與應用科學，11期，129-142"},
+    {year:"2017.10", title:"納稅者權利保護官之建置及職權行使之芻議—從消保法角度的建言（與廖桂華、宋名晰合著）", meta:"財稅法令，40(20)，44-51"},
+    {year:"2017.06", title:"從翻轉政治觀點論總統大選之民意流變（與王信文、宋名晰合著）", meta:"中華行政學報，20期，91-102"},
+    {year:"2017.04", title:"賣藥電台聽眾之消費權益（與董澤平合著）", meta:"消費者報導，432期，70-72"},
+    {year:"2017.01", title:"電子煙管制政策之芻議（與林清同合著）", meta:"治未指錄，5期，37-64"},
+    {year:"2016.12", title:"從網路中立性論「網路業者管理之公平競爭與消費者間之權益平衡」", meta:"國會月刊，44(12)，1-27"},
+    {year:"2016.12", title:"從消費者保護法制觀點論旅展策展人責任（與姜祖華、宋名晰合著）", meta:"休閒與遊憩研究，8(2)，37-65"},
+    {year:"2016.09", title:"中高齡勞動者活躍老化之法制芻議—兼評臺北地方法院100年度重勞訴字第3號判決（與涂敏群、王信文合著）", meta:"社會科學學報，23期，158-170"},
+    {year:"2016.09", title:"從最高行政法院判決評析性別歧視之重要實務見解與判斷標準（與王信文合著）", meta:"性別平等教育季刊，76期，121-128"},
+    {year:"2016.09", title:"論稅捐稽徵法上移送行政執行行為之法律性質—兼評北高行104年訴字第1455號裁定（與廖桂華合著）", meta:"稅務旬刊，2340期，17-22"},
+    {year:"2016.08", title:"淺述遺產管理人申報遺產稅義務（下）（與廖桂華合著）", meta:"財稅法令，39(16)，26-32"},
+    {year:"2016.08", title:"中國台商在東協經濟共同體中投資保護機制之芻議（與宋名晰、王信文合著）", meta:"明新學報，42(2)，139-152"},
+    {year:"2016.07", title:"淺述遺產管理人申報遺產稅義務（上）（與廖桂華合著）", meta:"財稅法令，39(14)，30-36"},
+    {year:"2016.01", title:"同性伴侶關係戶政註記之效力及侷限（與王信文合著）", meta:"治未指錄，4期，249-269"},
+    {year:"2015.12", title:"在臺女性外籍配偶之婚姻家庭權益保障調查與探討（與王信文合著）", meta:"社區發展季刊，152期，233-245"},
+    {year:"2015.12", title:"環境資源不法利得與環境污染事件判決於環保正義之探究—以高雄之半導體廠排放汙染物事件為例（與王信文合著）", meta:"環境與管理研究，16(2)，31-49"},
+    {year:"2015.10", title:"Towards understanding integration of heavyweight-product managers and collaboration software in collaborative product development: An empirical study in Taiwan（與 Ching-Torng Lin, Wen-Jui Wu 合著）", meta:"Technological Forecasting &amp; Social Change，Volume 99，October 2015，Pages 156-167（SSCI）"},
+    {year:"2015.08", title:"論兩岸司法互助機制之假婚姻事件與文書查證（與宋名晰合著）", meta:"明新學報，41(2)，33-43"},
+    {year:"2015.01", title:"論臺中市發展綠色社區之發展策略—以加拿大艾德蒙頓市社區經驗為例", meta:"衡平天下，1期，55-72"},
+    {year:"2015.01", title:"地方政府精進消費者保護法制芻議", meta:"法界天平，3期，63-81"},
+    {year:"2014.06", title:"臺灣交易所交易基金之套利績效分析（與王信文合著）", meta:"臺灣企業績效學刊，7(2)，125-141"},
+    {year:"2014.01", title:"食品安全風暴下政府的因應作為（與林清同合著）", meta:"治未指錄，2期，203-222"}
+  ],
+  book: [
+    {year:"2024.08", title:"長期照顧政策的未來及發展", meta:"收錄於《長期照顧政策與管理》(ISBN 978-626-381-065-5)，16-1～32，臺中：華格那出版社"},
+    {year:"2022.02", title:"Commentary of Taiwan Tobacco Hazards Prevention Act Amendment: A Consumer Protection Perspective（與 Ming-Hsi Sung, Shin-Wen Wang 合著）", meta:"收錄於 Current Aspects in Pharmaceutical Research and Development (ISBN 978-93-5547-141-3)，9, 121-129，Durango, USA: B P International"},
+    {year:"2016", title:"性別與法律（與施茂林、宋名晰合著）", meta:"亞洲大學財經法律學系"},
+    {year:"2015", title:"單身亡故去台老兵遺產繼承制度之理論與實務", meta:"九州出版社"}
+  ],
+  conference: [
+    {year:"2021.09", title:"A Legal Analysis of the Freedom of Navigation Operations and Innocent Passage Carried out by U.S. Warships in the South China Sea", meta:"2021 Taiwan International Conference on Ocean Governance，高雄市"},
+    {year:"2020.09", title:"清境農場擺夷舞的傳承與出發", meta:"2020南投學研討會，南投縣"},
+    {year:"2019.08", title:"電子商務下消費者個人資料之保護", meta:"第八屆兩岸和平發展法學論壇，中國天津"},
+    {year:"2019.06", title:"原住民基本法傳統領域劃設及國土資源利益分配初探（與姜祖華合著）", meta:"第三屆中彰投苗法制論壇，苗栗縣"},
+    {year:"2018.11", title:"簡評南投縣民宿管理輔導自治條例及清境農場民宿管理政策（與宋名晰合著）", meta:"第二屆中彰投苗法制論壇，臺中市政府"},
+    {year:"2018.10", title:"E-cigarette Control in Taiwan—Introduction and Comment on Taiwan Tobacco Hazards Prevention Act Revised Draft", meta:"5th World Congress on Advanced Nursing and Quality in Health Care，美國"},
+    {year:"2018.10", title:"電子煙之管制策略芻議—兼評菸害防制法修正草案（與宋名晰合著）", meta:"2018年菸害防制法學術研討會—菸害防制法20年總回顧，輔仁大學"},
+    {year:"2018.03", title:"評菸害防制法修正草案上電子煙之管制政策（與宋名晰、姜祖華合著）", meta:"2018社會變遷與當代議題國際學術研討會，台北市"},
+    {year:"2017.04", title:"THE STRATEGIES OF DEVELOPING AND PROMOTING ELECTRIC VEHICLES INDUSTRY IN TAIWAN（與 Tzuu-Hwa Jiang 合著）", meta:"2017 International Symposium on Business and Management (ISBM 2017)，Kyoto, Japan"},
+    {year:"2017.03", title:"從日航資遣員工案論中高齡勞動者之就業歧視—一個活躍老化觀點的法律分析（與宋名晰合著）", meta:"2017第一屆兩岸法制最新發展研討會，台北市"},
+    {year:"2017.03", title:"從網路中立性論網路業者管理與消費者權益（與宋名晰合著）", meta:"2017第一屆兩岸法制最新發展研討會，台北市"},
+    {year:"2016.12", title:"兩岸經濟、社會與文化融合趨勢之物聯網絡大數據分析研究（與林彥穎、王信文、江承鴻合著）", meta:"第七屆兩岸關係澳門論壇，澳門"},
+    {year:"2016.10", title:"古蹟火災風險評估與危機管理初探—以臺南市政府古蹟防護運作機制為例（與張榮鑫合著）", meta:"2016年南臺灣研究學術研討會，高雄市自然史教育館"},
+    {year:"2016.05", title:"An Empirical Experience of Developing and Promoting Electric Vehicles in Taichung（與 Ching-Torng Lin 合著）", meta:"7th International Research Meeting in Business and Management，Nice, France"},
+    {year:"2016.04", title:"中高齡勞動者活躍老化之法制芻議－兼評臺北地方法院100年度重勞訴字第3號判決（與涂敏群、王信文合著）", meta:"2016社會變遷與當代議題—活躍老化—學術研討會，空中大學"},
+    {year:"2015.12", title:"以事件分析法析論2016台灣大選於兩岸關係之影響（與張榮鑫、王信文、林晏丞合著）", meta:"第六屆兩岸關係澳門論壇，澳門"},
+    {year:"2015.12", title:"中國台商在東協經濟共同體中投資保護機制之建議（與王信文合著）", meta:"第六屆兩岸關係澳門論壇，澳門"},
+    {year:"2015.12", title:"兩岸經濟一體化之發展契機與大中華區域文化融合創新策略（與王信文、林晏丞、張榮鑫合著）", meta:"第六屆兩岸關係澳門論壇，澳門"},
+    {year:"2015.12", title:"評論2016台灣大選之政治事件對於島內政局發展之影響（與陳清木、王信文、林晏丞合著）", meta:"第六屆兩岸關係澳門論壇，澳門"},
+    {year:"2015.08", title:"兩岸共建大中華文創經濟體和諧發展機制之探討（與董澤平、邱宏祥合著）", meta:"第二屆兩岸和諧關係論壇，澳門"},
+    {year:"2015.06", title:"中國—東南亞國協自貿區中之台商投資保護機制初探", meta:"「兩岸民商財經法制發展」學術研討會，亞洲大學"},
+    {year:"2015.04", title:"台海兩岸醫療糾紛比較（與崔高明合著）", meta:"第三屆兩岸四地衛生法學與生命倫理研討會，澳門大學"},
+    {year:"2014.10", title:"營造綠色社區之研究—從加拿大成功經驗論臺中市發展策略（與林清同合著）", meta:"2014年海峽兩岸大學校長論壇暨科學技術研討會，大葉大學"},
+    {year:"2014.10", title:"台灣地區食品安全制度之管理及法制芻議（與林清同合著）", meta:"第六屆全球化時代犯罪與刑法國際論壇，北京"},
+    {year:"2014.08", title:"論兩岸司法互助機制—以假婚姻事件查驗為例", meta:"第三屆兩岸和平發展法學論壇，北京"},
+    {year:"2013.08", title:"論無人繼承遺產管理—以單身亡故榮民為論述核心", meta:"第二屆兩岸和平發展法學論壇，北京"}
+  ]
+};
+
+const COMMITTEES = [
+  {title:"雲林縣立體育場「性別平等專案小組」委員", org:"雲林縣政府"},
+  {title:"國立勤益科技大學性騷擾申訴評議委員會　委員", org:"國立勤益科技大學"},
+  {title:"教育部性別平等教育師資庫　講師", org:"教育部"},
+  {title:"財團法人婦女權益促進發展基金會　專家學者", org:"財團法人婦女權益促進發展基金會"},
+  {title:"臺中市政府性別平等專區「性別人才資料庫」　專家學者", org:"臺中市政府社會局"},
+  {title:"Journal of Pharmaceutical Sciences and Drug Discovery　編輯委員", org:"國際學術期刊"},
+  {title:"Addiction &amp; Drug Abuse Open Access Journal (ADOAJ)　編輯委員", org:"國際學術期刊"}
+];
+
+const RESEARCH_TAGS = ["行政管制","行政法制","性別平等教育","醫療政策與倫理","消費者保護","長期照顧政策","地方自治法制","性別與法律","公共行政"];
+
+function renderTags(){
+  document.getElementById('research-tags').innerHTML = RESEARCH_TAGS.map(t=>`<span class="tag">${t}</span>`).join('');
+}
+
+const CATEGORY_LABEL = {journal:"期刊論文", book:"專書／專書論文", conference:"研討會論文"};
+let activeCat = "all";
+
+function renderPubTabs(){
+  const total = PUBLICATIONS.journal.length + PUBLICATIONS.book.length + PUBLICATIONS.conference.length;
+  const tabs = [
+    {key:"all", label:"全部", count: total},
+    {key:"journal", label:"期刊論文", count: PUBLICATIONS.journal.length},
+    {key:"book", label:"專書／專書論文", count: PUBLICATIONS.book.length},
+    {key:"conference", label:"研討會論文", count: PUBLICATIONS.conference.length}
+  ];
+  document.getElementById('pub-tabs').innerHTML = tabs.map(t=>
+    `<button class="pub-tab ${t.key===activeCat?'active':''}" data-key="${t.key}">${t.label} <span class="count">${t.count}</span></button>`
+  ).join('');
+  document.querySelectorAll('.pub-tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ activeCat = btn.dataset.key; renderPubTabs(); renderPubList(); });
+  });
+}
+
+function renderPubList(){
+  let items = [];
+  ["journal","book","conference"].forEach(cat=>{
+    if(activeCat==="all" || activeCat===cat){
+      PUBLICATIONS[cat].forEach(p=> items.push({...p, cat}));
+    }
+  });
+  const list = document.getElementById('pub-list');
+  list.innerHTML = items.map(p=>`
+    <div class="pub-item">
+      <div class="pub-year">${p.year.split('.')[0]}<small>${p.year.includes('.')? p.year.split('.')[1]+'月':''}</small></div>
+      <div>
+        <div class="pub-title">${p.title}</div>
+        <div class="pub-meta">${p.meta}</div>
+        <span class="pub-badge">${CATEGORY_LABEL[p.cat]}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTalks(){
+  const sorted = [...PUBLICATIONS.conference].sort((a,b)=> parseFloat(b.year) - parseFloat(a.year));
+  document.getElementById('talks-body').innerHTML = sorted.map(t=>`
+    <tr>
+      <td data-label="篇名"><span class="talk-topic">${t.title}</span></td>
+      <td data-label="研討會名稱／地點">${t.meta}</td>
+      <td data-label="日期" class="talk-date">${t.year}</td>
+    </tr>
+  `).join('');
+}
+
+function renderCommittees(){
+  document.getElementById('committee-list').innerHTML = COMMITTEES.map((c,i)=>`
+    <div class="committee-item">
+      <div class="icon">${i+1}</div>
+      <div class="txt"><b>${c.title}</b><span>${c.org}</span></div>
+    </div>
+  `).join('');
+}
+
+function renderStats(){
+  document.getElementById('stat-pubs').textContent = PUBLICATIONS.journal.length;
+  document.getElementById('stat-talks').textContent = PUBLICATIONS.conference.length;
+  document.getElementById('stat-committee').textContent = COMMITTEES.length;
+  document.getElementById('stat-years').textContent = "2000–2026";
+}
+
+function sharePage(){
+  const url = window.location.href;
+  if(navigator.share){
+    navigator.share({title:"程立民 教授｜個人學術與專業經歷", url});
+  } else {
+    navigator.clipboard && navigator.clipboard.writeText(url);
+    alert("網址已複製，歡迎分享給需要的朋友！");
+  }
+}
+
+document.getElementById('year').textContent = "2026";
+renderTags();
+renderPubTabs();
+renderPubList();
+renderTalks();
+renderCommittees();
+renderStats();
+</script>
+</body>
+</html>
