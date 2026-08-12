@@ -265,6 +265,7 @@
       <a href="#about">學經歷</a>
       <a href="#publications">著作</a>
       <a href="#talks">研討會論文</a>
+      <a href="#lectures">專題演講</a>
       <a href="#committee">委員與人才庫</a>
       <a href="#contact">聯絡方式</a>
     </div>
@@ -307,7 +308,7 @@
   <div class="stats" id="stats-strip">
     <div class="stat"><div class="num" id="stat-pubs">0</div><div class="label">期刊論文數</div></div>
     <div class="stat"><div class="num" id="stat-talks">0</div><div class="label">研討會論文</div></div>
-    <div class="stat"><div class="num" id="stat-committee">0</div><div class="label">委員／人才庫職務</div></div>
+    <div class="stat"><div class="num" id="stat-lectures">0</div><div class="label">專題演講場次</div></div>
     <div class="stat"><div class="num"><span id="stat-years">--</span></div><div class="label">著述年度跨度</div></div>
   </div>
 </div>
@@ -372,6 +373,20 @@
       <table>
         <thead><tr><th style="width:44%">篇名</th><th style="width:38%">研討會名稱／地點</th><th style="width:18%">日期</th></tr></thead>
         <tbody id="talks-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="lectures">
+    <div class="section-head">
+      <span class="section-tag">Invited Lectures</span>
+      <h2>專題演講</h2>
+      <p class="section-sub">歷年受邀至大學系所、政府機關與民間團體主講之專題演講／教育訓練課程（依公開可查證之活動公告彙整；欄位若無法查證則標示「未公布」，不臆測填寫）。</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:15%">日期</th><th style="width:12%">時間</th><th style="width:40%">題目</th><th style="width:33%">地點／主辦單位</th></tr></thead>
+        <tbody id="lectures-body"></tbody>
       </table>
     </div>
   </section>
@@ -485,6 +500,21 @@ const PUBLICATIONS = {
   ]
 };
 
+const LECTURES = [
+  {date:"2025.10.28", time:"15:00", title:"數位世界常見的法律議題", location:"國立中興大學資訊管理學系"},
+  {date:"2025.10.21", time:"09:30", title:"校園生活常見的法律問題", location:"國立中興大學資訊管理學系"},
+  {date:"2025.10.15", time:"19:00", title:"人工智慧發展下著作權主張與合理使用之界線與案例解析", location:"國立中興大學資訊管理學系"},
+  {date:"2025.09.22", time:"19:00", title:"人工智慧對著作權的影響", location:"國立中興大學資訊管理學系"},
+  {date:"2024.05", time:"未公布", title:"性別平等教育課程（以實際案例講授）", location:"國軍退除役官兵輔導委員會113年榮欣志願服務領導幹部研習暨觀摩，清境農場（活動日期5/2–5/4，確切授課日未公布）"},
+  {date:"2024.03", time:"未公布", title:"性侵害或性騷擾事件法院判決案例研討會－臺中場次（專題報告人之一）", location:"中華非營利組織發展協會主辦（活動日期3/18–19，確切場次日未公布）"},
+  {date:"2023.10.26", time:"10:10", title:"ChatGPT可能遇到的法律問題", location:"國立中興大學資訊管理學系"},
+  {date:"2022.12.19", time:"18:20", title:"數位世界中該注意的法律問題", location:"國立中興大學資訊管理學系"},
+  {date:"2021.11.19", time:"14:00–17:00", title:"資通安全管理法與電子商務系統", location:"國立彰化師範大學企業管理學系"},
+  {date:"2020.12.21", time:"09:10", title:"網路法律專題及運用", location:"國立中興大學資訊管理學系"},
+  {date:"2020.12.14", time:"未公布", title:"地方公務倫理", location:"國立暨南國際大學公共行政與政策學系"},
+  {date:"2020.10.13", time:"10:10–12:00", title:"法規管理系統（RMS）簡介－以菲律賓為例", location:"國立中正大學東協與南亞研究中心"}
+];
+
 const COMMITTEES = [
   {title:"雲林縣立體育場「性別平等專案小組」委員", org:"雲林縣政府"},
   {title:"國立勤益科技大學性騷擾申訴評議委員會　委員", org:"國立勤益科技大學"},
@@ -555,6 +585,18 @@ function renderTalks(){
   `).join('');
 }
 
+function renderLectures(){
+  const sorted = [...LECTURES].sort((a,b)=> b.date.localeCompare(a.date));
+  document.getElementById('lectures-body').innerHTML = sorted.map(l=>`
+    <tr>
+      <td data-label="日期" class="talk-date">${l.date}</td>
+      <td data-label="時間">${l.time}</td>
+      <td data-label="題目"><span class="talk-topic">${l.title}</span></td>
+      <td data-label="地點／主辦單位">${l.location}</td>
+    </tr>
+  `).join('');
+}
+
 function renderCommittees(){
   document.getElementById('committee-list').innerHTML = COMMITTEES.map((c,i)=>`
     <div class="committee-item">
@@ -567,7 +609,7 @@ function renderCommittees(){
 function renderStats(){
   document.getElementById('stat-pubs').textContent = PUBLICATIONS.journal.length;
   document.getElementById('stat-talks').textContent = PUBLICATIONS.conference.length;
-  document.getElementById('stat-committee').textContent = COMMITTEES.length;
+  document.getElementById('stat-lectures').textContent = LECTURES.length;
   document.getElementById('stat-years').textContent = "2000–2026";
 }
 
@@ -586,6 +628,7 @@ renderTags();
 renderPubTabs();
 renderPubList();
 renderTalks();
+renderLectures();
 renderCommittees();
 renderStats();
 </script>
