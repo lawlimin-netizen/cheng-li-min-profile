@@ -179,6 +179,19 @@
     background:var(--paper-2); color:var(--navy-2); border:1px solid var(--line); font-weight:600;
   }
   .hidden{display:none !important;}
+  .pub-link{
+    display:inline-flex; align-items:center; gap:5px; margin-top:10px;
+    font-size:.78rem; font-weight:700; color:var(--navy); text-decoration:none;
+    background:var(--paper-2); border:1px solid var(--gold); padding:5px 12px; border-radius:999px;
+    transition:.2s;
+  }
+  .pub-link svg{width:13px; height:13px; flex-shrink:0;}
+  .pub-link:hover{background:var(--gold); color:#fff; border-color:var(--gold);}
+  .pub-link-none{
+    background:transparent; border:1px dashed var(--line); color:var(--ink-soft); font-weight:500; cursor:default;
+  }
+  .pub-link-none:hover{background:transparent; color:var(--ink-soft);}
+  .pub-link-inline{margin-top:0; margin-left:8px; padding:2px 10px; font-size:.72rem; vertical-align:middle;}
 
   /* TALKS TABLE */
   .table-wrap{
@@ -393,51 +406,51 @@
 <script>
 const PUBLICATIONS = {
   journal: [
-    {year:"2026.04", title:"護理實習生於醫院遭受性騷擾的法律對策", meta:"性別平等教育季刊，113期，76-79"},
-    {year:"2025.12", title:"公務人員職場霸凌防治之法制芻議", meta:"中華行政學報，37期，101-115"},
-    {year:"2025.06", title:"性別友善校園之營造及法制芻議", meta:"中華行政學報，36期，135-151"},
-    {year:"2024.12", title:"長期照顧政策的策進與展望", meta:"國會季刊，52(4)，111-146"},
-    {year:"2024.06", title:"論虛擬資產之投資風險之法遵設計", meta:"中華行政學報，34期，127-137"},
-    {year:"2024.01", title:"從不施行心肺復甦術同意書（DNR）論醫院風險管理", meta:"12期，121-148"},
-    {year:"2021.12", title:"美國航行自由計畫對中國與臺灣領海主權影響之法律分析", meta:"科技法學論叢，17期，155-187"},
-    {year:"2021.08", title:"環保與消費資訊間的拔河—簡評無包裝商店之消費權益", meta:"消費者報導，484期，12-15"},
-    {year:"2021.08", title:"不該碰的別碰—簡析民俗調理業人員妨害性自主司法案件判決（與黃玲娟合著）", meta:"性別平等教育季刊，94期，136-143"},
-    {year:"2021.06", title:"原住民族傳統領域劃設之爭議及建議", meta:"中華行政學報，28期，153-167"},
-    {year:"2021.01", title:"露營場管理法制化之必要與建構", meta:"治未指錄，7期，169-193"},
-    {year:"2020.06", title:"地方立法權之美麗與哀愁—以地方自治團體自治條例受中央函告無效為中心", meta:"中華行政學報，26期，141-158"},
-    {year:"2019.07", title:"不合時宜法規之檢視及建議", meta:"全國律師月刊，23期，104-107"},
-    {year:"2019.03", title:"簡評南投縣民宿管理輔導自治條例及民宿管理政策", meta:"國會季刊，47(1)，23-41"},
-    {year:"2019.01", title:"電子煙之管制策略芻議—兼評菸害防制法修正草案（與宋名晰合著）", meta:"治未指錄，7期，21-43"},
+    {year:"2026.04", title:"護理實習生於醫院遭受性騷擾的法律對策", meta:"性別平等教育季刊，113期，76-79", url:"https://www.airitilibrary.com/Article/Detail/15629716-N202606100008-00010"},
+    {year:"2025.12", title:"公務人員職場霸凌防治之法制芻議", meta:"中華行政學報，37期，101-115", url:"https://www.airitilibrary.com/Article/Detail/a0000246-N202602040002-00007"},
+    {year:"2025.06", title:"性別友善校園之營造及法制芻議", meta:"中華行政學報，36期，135-151", url:"https://www.airitilibrary.com/Article/Detail/a0000246-N202507230011-00009"},
+    {year:"2024.12", title:"長期照顧政策的策進與展望", meta:"國會季刊，52(4)，111-146", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000267492"},
+    {year:"2024.06", title:"論虛擬資產之投資風險之法遵設計", meta:"中華行政學報，34期，127-137", url:"https://www.airitilibrary.com/Article/Detail/a0000246-N202410080007-00007"},
+    {year:"2024.01", title:"從不施行心肺復甦術同意書（DNR）論醫院風險管理", meta:"12期，121-148", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000271667"},
+    {year:"2021.12", title:"美國航行自由計畫對中國與臺灣領海主權影響之法律分析", meta:"科技法學論叢，17期，155-187", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000254925"},
+    {year:"2021.08", title:"環保與消費資訊間的拔河—簡評無包裝商店之消費權益", meta:"消費者報導，484期，12-15", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000262349"},
+    {year:"2021.08", title:"不該碰的別碰—簡析民俗調理業人員妨害性自主司法案件判決（與黃玲娟合著）", meta:"性別平等教育季刊，94期，136-143", url:"https://geeq.tw/post/308/"},
+    {year:"2021.06", title:"原住民族傳統領域劃設之爭議及建議", meta:"中華行政學報，28期，153-167", url:"https://www.airitilibrary.com/Article/Detail/a0000246-202106-202203290003-202203290003-153-167"},
+    {year:"2021.01", title:"露營場管理法制化之必要與建構", meta:"治未指錄，7期，169-193", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000253843"},
+    {year:"2020.06", title:"地方立法權之美麗與哀愁—以地方自治團體自治條例受中央函告無效為中心", meta:"中華行政學報，26期，141-158", url:"https://www.airitilibrary.com/Article/Detail/a0000246-202006-202010210005-202010210005-141-157"},
+    {year:"2019.07", title:"不合時宜法規之檢視及建議", meta:"全國律師月刊，23期，104-107", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000242446"},
+    {year:"2019.03", title:"簡評南投縣民宿管理輔導自治條例及民宿管理政策", meta:"國會季刊，47(1)，23-41", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000240856"},
+    {year:"2019.01", title:"電子煙之管制策略芻議—兼評菸害防制法修正草案（與宋名晰合著）", meta:"治未指錄，7期，21-43", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000260805"},
     {year:"2018.10", title:"機關受贈財物之界線與責任—兼評臺灣高等法院99年度上訴字第2019號刑事判決（與黃素昧合著）", meta:"財稅法令，41(19)，37-42"},
     {year:"2018.07", title:"A Consumer Protection Perspective Commentary of Taiwan Tobacco Hazards Prevention Act Amendment（與 Ming-Hsi Sung, Shin-Wen Wang 合著）", meta:"Addiction &amp; Drug Abuse Open Access Journal，1(1)，1-7"},
     {year:"2018.06", title:"臺中市政府「法律行動專車」赴和平區三叉坑服務紀實", meta:"全國律師雜誌，107(6)，104-105"},
-    {year:"2018.03", title:"消費者隱私保護及網路業者管理之研究—以被遺忘權為論述核心", meta:"消費者保護研究，22期，139-184"},
-    {year:"2018.03", title:"A study of regulatory policies and relevant issues concerning electronic cigarette use in Taiwan（與 Tzuu Hwa Jiang, Matthew A. Hawkins 合著；本人為通訊作者）", meta:"International Journal of Health Planning and Management，2018;33:e119–e130（SSCI）"},
+    {year:"2018.03", title:"消費者隱私保護及網路業者管理之研究—以被遺忘權為論述核心", meta:"消費者保護研究，22期，139-184", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000237274"},
+    {year:"2018.03", title:"A study of regulatory policies and relevant issues concerning electronic cigarette use in Taiwan（與 Tzuu Hwa Jiang, Matthew A. Hawkins 合著；本人為通訊作者）", meta:"International Journal of Health Planning and Management，2018;33:e119–e130（SSCI）", url:"https://doi.org/10.1002/hpm.2440"},
     {year:"2017.12", title:"An Empirical Experience of Developing and Managing Electric Vehicles in Taichung（與袁貞貞合著）", meta:"人文與應用科學，11期，129-142"},
     {year:"2017.10", title:"納稅者權利保護官之建置及職權行使之芻議—從消保法角度的建言（與廖桂華、宋名晰合著）", meta:"財稅法令，40(20)，44-51"},
     {year:"2017.06", title:"從翻轉政治觀點論總統大選之民意流變（與王信文、宋名晰合著）", meta:"中華行政學報，20期，91-102"},
-    {year:"2017.04", title:"賣藥電台聽眾之消費權益（與董澤平合著）", meta:"消費者報導，432期，70-72"},
-    {year:"2017.01", title:"電子煙管制政策之芻議（與林清同合著）", meta:"治未指錄，5期，37-64"},
-    {year:"2016.12", title:"從網路中立性論「網路業者管理之公平競爭與消費者間之權益平衡」", meta:"國會月刊，44(12)，1-27"},
+    {year:"2017.04", title:"賣藥電台聽眾之消費權益（與董澤平合著）", meta:"消費者報導，432期，70-72", url:"https://www.airitilibrary.com/Publication/Index/P20180921002-201704-201901100026-201901100026-70-72"},
+    {year:"2017.01", title:"電子煙管制政策之芻議（與林清同合著）", meta:"治未指錄，5期，37-64", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000260777"},
+    {year:"2016.12", title:"從網路中立性論「網路業者管理之公平競爭與消費者間之權益平衡」", meta:"國會月刊，44(12)，1-27", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000232000"},
     {year:"2016.12", title:"從消費者保護法制觀點論旅展策展人責任（與姜祖華、宋名晰合著）", meta:"休閒與遊憩研究，8(2)，37-65"},
     {year:"2016.09", title:"中高齡勞動者活躍老化之法制芻議—兼評臺北地方法院100年度重勞訴字第3號判決（與涂敏群、王信文合著）", meta:"社會科學學報，23期，158-170"},
     {year:"2016.09", title:"從最高行政法院判決評析性別歧視之重要實務見解與判斷標準（與王信文合著）", meta:"性別平等教育季刊，76期，121-128"},
-    {year:"2016.09", title:"論稅捐稽徵法上移送行政執行行為之法律性質—兼評北高行104年訴字第1455號裁定（與廖桂華合著）", meta:"稅務旬刊，2340期，17-22"},
+    {year:"2016.09", title:"論稅捐稽徵法上移送行政執行行為之法律性質—兼評北高行104年訴字第1455號裁定（與廖桂華合著）", meta:"稅務旬刊，2340期，17-22", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000230852"},
     {year:"2016.08", title:"淺述遺產管理人申報遺產稅義務（下）（與廖桂華合著）", meta:"財稅法令，39(16)，26-32"},
-    {year:"2016.08", title:"中國台商在東協經濟共同體中投資保護機制之芻議（與宋名晰、王信文合著）", meta:"明新學報，42(2)，139-152"},
+    {year:"2016.08", title:"中國台商在東協經濟共同體中投資保護機制之芻議（與宋名晰、王信文合著）", meta:"明新學報，42(2)，139-152", url:"https://www.airitilibrary.com/Article/Detail/1728760X-201608-201709250011-201709250011-139-151"},
     {year:"2016.07", title:"淺述遺產管理人申報遺產稅義務（上）（與廖桂華合著）", meta:"財稅法令，39(14)，30-36"},
-    {year:"2016.01", title:"同性伴侶關係戶政註記之效力及侷限（與王信文合著）", meta:"治未指錄，4期，249-269"},
-    {year:"2015.12", title:"在臺女性外籍配偶之婚姻家庭權益保障調查與探討（與王信文合著）", meta:"社區發展季刊，152期，233-245"},
+    {year:"2016.01", title:"同性伴侶關係戶政註記之效力及侷限（與王信文合著）", meta:"治未指錄，4期，249-269", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000260775"},
+    {year:"2015.12", title:"在臺女性外籍配偶之婚姻家庭權益保障調查與探討（與王信文合著）", meta:"社區發展季刊，152期，233-245", url:"https://cdj.sfaa.gov.tw/Journal/FileLoad?no=167418"},
     {year:"2015.12", title:"環境資源不法利得與環境污染事件判決於環保正義之探究—以高雄之半導體廠排放汙染物事件為例（與王信文合著）", meta:"環境與管理研究，16(2)，31-49"},
-    {year:"2015.10", title:"Towards understanding integration of heavyweight-product managers and collaboration software in collaborative product development: An empirical study in Taiwan（與 Ching-Torng Lin, Wen-Jui Wu 合著）", meta:"Technological Forecasting &amp; Social Change，Volume 99，October 2015，Pages 156-167（SSCI）"},
+    {year:"2015.10", title:"Towards understanding integration of heavyweight-product managers and collaboration software in collaborative product development: An empirical study in Taiwan（與 Ching-Torng Lin, Wen-Jui Wu 合著）", meta:"Technological Forecasting &amp; Social Change，Volume 99，October 2015，Pages 156-167（SSCI）", url:"https://doi.org/10.1016/j.techfore.2015.06.030"},
     {year:"2015.08", title:"論兩岸司法互助機制之假婚姻事件與文書查證（與宋名晰合著）", meta:"明新學報，41(2)，33-43"},
     {year:"2015.01", title:"論臺中市發展綠色社區之發展策略—以加拿大艾德蒙頓市社區經驗為例", meta:"衡平天下，1期，55-72"},
-    {year:"2015.01", title:"地方政府精進消費者保護法制芻議", meta:"法界天平，3期，63-81"},
+    {year:"2015.01", title:"地方政府精進消費者保護法制芻議", meta:"法界天平，3期，63-81", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000252121"},
     {year:"2014.06", title:"臺灣交易所交易基金之套利績效分析（與王信文合著）", meta:"臺灣企業績效學刊，7(2)，125-141"},
-    {year:"2014.01", title:"食品安全風暴下政府的因應作為（與林清同合著）", meta:"治未指錄，2期，203-222"}
+    {year:"2014.01", title:"食品安全風暴下政府的因應作為（與林清同合著）", meta:"治未指錄，2期，203-222", url:"https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000260742"}
   ],
   book: [
-    {year:"2024.08", title:"長期照顧政策的未來及發展", meta:"收錄於《長期照顧政策與管理》(ISBN 978-626-381-065-5)，16-1～32，臺中：華格那出版社"},
+    {year:"2024.08", title:"長期照顧政策的未來及發展", meta:"收錄於《長期照顧政策與管理》(ISBN 978-626-381-065-5)，16-1～32，臺中：華格那出版社", url:"https://wagners.com.tw/product/ka10-3/"},
     {year:"2022.02", title:"Commentary of Taiwan Tobacco Hazards Prevention Act Amendment: A Consumer Protection Perspective（與 Ming-Hsi Sung, Shin-Wen Wang 合著）", meta:"收錄於 Current Aspects in Pharmaceutical Research and Development (ISBN 978-93-5547-141-3)，9, 121-129，Durango, USA: B P International"},
     {year:"2016", title:"性別與法律（與施茂林、宋名晰合著）", meta:"亞洲大學財經法律學系"},
     {year:"2015", title:"單身亡故去台老兵遺產繼承制度之理論與實務", meta:"九州出版社"}
@@ -467,8 +480,8 @@ const PUBLICATIONS = {
     {year:"2015.04", title:"台海兩岸醫療糾紛比較（與崔高明合著）", meta:"第三屆兩岸四地衛生法學與生命倫理研討會，澳門大學"},
     {year:"2014.10", title:"營造綠色社區之研究—從加拿大成功經驗論臺中市發展策略（與林清同合著）", meta:"2014年海峽兩岸大學校長論壇暨科學技術研討會，大葉大學"},
     {year:"2014.10", title:"台灣地區食品安全制度之管理及法制芻議（與林清同合著）", meta:"第六屆全球化時代犯罪與刑法國際論壇，北京"},
-    {year:"2014.08", title:"論兩岸司法互助機制—以假婚姻事件查驗為例", meta:"第三屆兩岸和平發展法學論壇，北京"},
-    {year:"2013.08", title:"論無人繼承遺產管理—以單身亡故榮民為論述核心", meta:"第二屆兩岸和平發展法學論壇，北京"}
+    {year:"2014.08", title:"論兩岸司法互助機制—以假婚姻事件查驗為例", meta:"第三屆兩岸和平發展法學論壇，北京", url:"https://www.legal.taichung.gov.tw/media/171354/53716302319.pdf"},
+    {year:"2013.08", title:"論無人繼承遺產管理—以單身亡故榮民為論述核心", meta:"第二屆兩岸和平發展法學論壇，北京", url:"https://www.legal.taichung.gov.tw/media/171350/53716254024.pdf"}
   ]
 };
 
@@ -522,6 +535,10 @@ function renderPubList(){
         <div class="pub-title">${p.title}</div>
         <div class="pub-meta">${p.meta}</div>
         <span class="pub-badge">${CATEGORY_LABEL[p.cat]}</span>
+        ${p.url ? `<a class="pub-link" href="${p.url}" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+            全文連結
+          </a>` : `<span class="pub-link pub-link-none">尚無公開全文連結</span>`}
       </div>
     </div>
   `).join('');
@@ -531,7 +548,7 @@ function renderTalks(){
   const sorted = [...PUBLICATIONS.conference].sort((a,b)=> parseFloat(b.year) - parseFloat(a.year));
   document.getElementById('talks-body').innerHTML = sorted.map(t=>`
     <tr>
-      <td data-label="篇名"><span class="talk-topic">${t.title}</span></td>
+      <td data-label="篇名"><span class="talk-topic">${t.title}</span>${t.url ? ` <a class="pub-link pub-link-inline" href="${t.url}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>連結</a>` : ''}</td>
       <td data-label="研討會名稱／地點">${t.meta}</td>
       <td data-label="日期" class="talk-date">${t.year}</td>
     </tr>
