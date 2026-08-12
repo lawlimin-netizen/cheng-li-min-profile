@@ -308,7 +308,7 @@
   <div class="stats" id="stats-strip">
     <div class="stat"><div class="num" id="stat-pubs">0</div><div class="label">期刊論文數</div></div>
     <div class="stat"><div class="num" id="stat-talks">0</div><div class="label">研討會論文</div></div>
-    <div class="stat"><div class="num" id="stat-lectures">0</div><div class="label">專題演講場次</div></div>
+    <div class="stat"><div class="num" id="stat-committee">0</div><div class="label">顧問／委員數</div></div>
     <div class="stat"><div class="num"><span id="stat-years">--</span></div><div class="label">著述年度跨度</div></div>
   </div>
 </div>
@@ -609,7 +609,7 @@ function renderCommittees(){
 function renderStats(){
   document.getElementById('stat-pubs').textContent = PUBLICATIONS.journal.length;
   document.getElementById('stat-talks').textContent = PUBLICATIONS.conference.length;
-  document.getElementById('stat-lectures').textContent = LECTURES.length;
+  document.getElementById('stat-committee').textContent = COMMITTEES.length;
   document.getElementById('stat-years').textContent = "2000–2026";
 }
 
